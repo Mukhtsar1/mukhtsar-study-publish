@@ -1,0 +1,91 @@
+name: Publish carousel
+
+# 18:00 UTC = 21:00 KSA (peak) = 02:00 Malaysia next day
+# Sunday / Tuesday / Thursday
+on:
+  schedule:
+    - cron: "0 18 * * 0,2,4"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Topic id (blank = next in queue)"
+        required: false
+      path:
+        description: "A | A-img | B | B-img (blank = topic default)"
+        required: false
+      dry_run:
+        description: "Build and QA only, do not publish"
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write          # to commit rendered PNGs so Instagram can fetch them
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install system libs for WeasyPrint
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libpango-1.0-0 libpangoft2-1.0-0 \
+            libharfbuzz0b libfribidi0 libcairo2
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Set up assets
+        run: python -m tools.setup_assets
+
+      - name: Build carousel
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.topic }}" ]; then
+            python -m src.run build --topic "${{ github.event.inputs.topic }}" \
+              ${{ github.event.inputs.path && format('--path {0}', github.event.inputs.path) || '' }}
+          else
+            python -m src.run build --next
+          fi
+
+      - name: Commit rendered slides
+        run: |
+          git config user.name  "mukhtsar-bot"
+          git config user.email "bot@mukhtsar.com"
+          git add out/ content/state.json
+          git commit -m "build: carousel $(date -u +%F)" || echo "nothing to commit"
+          git push
+
+      - name: Wait for raw.githubusercontent to serve the new files
+        run: sleep 45
+
+      - name: Publish to Instagram
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL }}
+        run: |
+          RUN_ID=$(ls -t out | head -1)
+          echo "Publishing $RUN_ID"
+          python -m src.run publish --id "$RUN_ID"
+
+      - name: Record publish state
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git add content/state.json
+          git commit -m "state: published $(date -u +%F)" || echo "nothing to commit"
+          git push
+
+      - name: Upload slides as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: carousel-${{ github.run_number }}
+          path: out/*/
+          retention-days: 14

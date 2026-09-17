@@ -1,0 +1,65 @@
+# Mukhtsar carousel pipeline settings
+
+account: "@mukhtsar_study"
+
+# Path rotation for topics that don't pin their own path.
+# Keeps the grid alternating between dark and light.
+rotation: ["A", "B-img", "A-img", "B"]
+
+# Posting schedule (used by the GitHub Actions workflow).
+# 18:00 UTC = 21:00 KSA = 02:00 Malaysia next day
+schedule:
+  days: ["sunday", "tuesday", "thursday"]
+  utc_hour: 18
+
+# Photo sourcing (Pexels)
+images:
+  # Who may appear in a sourced photo.
+  #   none     - reject any photo described as containing a person  (default)
+  #   no_women - reject only photos described as containing women
+  #   allow    - no person filter
+  #
+  # LIMIT: Pexels gives us alt text and a URL slug, nothing more. It cannot be
+  # asked whether a woman in a photo is dressed modestly, and many photos carry
+  # vague or missing descriptions. "none" is the only setting that is actually
+  # reliable, because it does not depend on the description being accurate
+  # about clothing — only about whether a person is there at all. Even then,
+  # a photo with no useful alt text can slip through: review before publishing.
+  people: none
+
+  # Reject photos whose description names a country other than Malaysia.
+  # Stock search for "train station" returns the whole world — the first live
+  # run pulled Tokyo, Osaka and Basel into a carousel about Kuala Lumpur.
+  # LIMIT: only catches photos Pexels labelled with a place. A generic
+  # "modern railway station interior" could be anywhere and passes untouched.
+  reject_foreign_places: true
+
+# Topic discovery
+discovery:
+  # How similar a proposed topic may be to one already in the bank before it
+  # is rejected as a repeat. Measured on the current bank:
+  #   unrelated topics    0.13 - 0.26
+  #   new angles          0.15 - 0.22
+  #   reworded duplicates 0.42 - 0.67
+  # 0.35 sits in the gap. Raise it to allow closer angles, lower to be stricter.
+  threshold: 0.35
+
+# Topic drafting with Gemini (optional — `discover --generate`)
+generation:
+  # Pin an explicit version. An alias ending in '-latest' repoints to newly
+  # launched, heavily contended models without warning, which changes both
+  # output and latency underneath a pipeline tuned against something else.
+  model: "gemini-3.5-flash-lite"
+
+  # Seconds to wait for one generation call. Flash tiers normally answer well
+  # inside 30s; a contended model can take far longer.
+  timeout: 180
+
+  # Extra attempts after the first. Timeouts and 5xx are retried, 429 once
+  # with a longer pause, 404 never.
+  retries: 2
+
+# Safety
+require_qa_pass: true      # never publish if QA fails
+max_slides: 10
+min_slides: 3

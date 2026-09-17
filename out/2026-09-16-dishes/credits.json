@@ -1,0 +1,80 @@
+{
+  "00_cover.png": {
+    "pexels_id": 32689476,
+    "photographer": "Change C.C",
+    "source": "https://www.pexels.com/photo/buffet-style-chicken-curry-dish-presentation-32689476/",
+    "keywords": [
+      "malaysian food table",
+      "asian food spread",
+      "street food asia"
+    ],
+    "description": "Delicious buffet style chicken curry in a chafing dish with lime and veggies.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "01_item1.png": {
+    "pexels_id": 674574,
+    "photographer": "Cats Coming",
+    "source": "https://www.pexels.com/photo/cooked-rice-and-curry-food-served-on-white-plate-674574/",
+    "keywords": [
+      "nasi lemak",
+      "coconut rice dish",
+      "malaysian rice plate"
+    ],
+    "description": "A delicious plate of creamy vegetable curry served with rice and a wooden spoon, perfect for a tasty meal.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "02_item2.png": {
+    "pexels_id": 5643427,
+    "photographer": "Nyara Aquino",
+    "source": "https://www.pexels.com/photo/kebab-skewers-on-wooden-chopping-board-5643427/",
+    "keywords": [
+      "satay skewers",
+      "grilled skewers peanut sauce",
+      "chicken skewers"
+    ],
+    "description": "Juicy grilled chicken skewers on a wooden board with lime and herbs.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "03_item3.png": {
+    "pexels_id": 38834853,
+    "photographer": "Kamal Uddin",
+    "source": "https://www.pexels.com/photo/delicious-parathas-cooking-on-tawa-grill-38834853/",
+    "keywords": [
+      "roti canai",
+      "flatbread curry",
+      "indian flatbread"
+    ],
+    "description": "Close-up of golden parathas being cooked on a tawa, showcasing traditional South Asian street food.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "04_item4.png": {
+    "pexels_id": 37081066,
+    "photographer": "Teguh S",
+    "source": "https://www.pexels.com/photo/delicious-nasi-goreng-with-fried-egg-and-satay-37081066/",
+    "keywords": [
+      "nasi kandar",
+      "rice curry plate",
+      "curry rice meal"
+    ],
+    "description": "A plate of Nasi Goreng served with fried egg, satay, and iced tea. Perfect blend of flavors.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "05_item5.png": {
+    "pexels_id": 365459,
+    "photographer": "Cats Coming",
+    "source": "https://www.pexels.com/photo/seafood-pizza-melting-cheese-365459/",
+    "keywords": [
+      "teh tarik",
+      "milk tea glass",
+      "pulled tea malaysia"
+    ],
+    "description": "Appetizing close-up of a cheesy pizza slice with toppings, being pulled from a freshly baked pie.",
+    "needs_review": true,
+    "place_confirmed": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "2026-09-16-dishes",
+  "topic": "dishes",
+  "path": "A-img",
+  "slides": [
+    "00_cover.png",
+    "01_item1.png",
+    "02_item2.png",
+    "03_item3.png",
+    "04_item4.png",
+    "05_item5.png",
+    "06_cta.png"
+  ],
+  "built": "2026-09-16T13:06:21.863555"
+}

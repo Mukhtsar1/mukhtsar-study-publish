@@ -1,0 +1,397 @@
+# Mukhtsar carousel topic bank
+# ---------------------------------------------------------------------------
+# Each topic is one carousel. The pipeline picks the next unpublished topic,
+# builds it on the given path, and publishes it.
+#
+# path:  A | A-img | B | B-img   (omit to let the rotation decide)
+# keywords: only used by *-img paths; one list per slide that has a photo window
+#
+# Slide kinds: cover | item | checklist | cta
+# ---------------------------------------------------------------------------
+
+topics:
+
+  - id: costs
+    path: A
+    tag: "التكاليف"
+    hook: "كم تكلف الدراسة في ماليزيا فعلاً؟"
+    hashtags: ["الدراسة_في_ماليزيا", "ابتعاث", "تكاليف_الدراسة", "مختصر"]
+    cover:
+      eyebrow: "REAL COST BREAKDOWN · MALAYSIA"
+      icon: money
+      pixel: "RM"
+      headline: "كم تكلف الدراسة"
+      highlight: "في ماليزيا فعلاً؟"
+      subline: "تفصيل صريح لكل بند —<br>حتى تخطط بثقة قبل أي قرار"
+    source: "أرقام تقريبية بالرينغيت — تتغير حسب الجامعة والمدينة"
+    items:
+      - icon: university
+        title: "الرسوم الدراسية"
+        subtitle: "سنوياً · RM 15,000 – 50,000+"
+        body: "تختلف حسب الجامعة والتخصص — الطب وطب الأسنان في أعلى الشريحة، <span class='hl'>والجامعات الحكومية غالباً أقل</span> من الخاصة"
+      - icon: home
+        title: "السكن"
+        subtitle: "شهرياً · RM 450 – 1,500+"
+        body: "الغرفة المشتركة من 450 إلى 800 رينغيت، والشقة الخاصة تتجاوز 1,500 — <span class='hl'>والسكن الجامعي خيار وسط آمن</span>"
+      - icon: food
+        title: "المعيشة الشهرية"
+        subtitle: "شهرياً · RM 1,000 – 2,000"
+        body: "تشمل الطعام والمواصلات والمصاريف الشخصية — <span class='hl'>كوالالمبور أعلى من مدن مثل نيلاي</span>"
+      - icon: document
+        title: "بنود لا تنساها"
+        subtitle: "مرة واحدة"
+        body: "رسوم التأشيرة · التأمين الصحي · تذكرة السفر · رسوم التسجيل والكتب · <span class='hl'>مصروف طوارئ</span>"
+    checklist:
+      eyebrow: "HOW TO SPEND LESS"
+      title: "كيف تقلل تكاليفك؟"
+      lines:
+        - "سكن قريب من الجامعة يقلل وقت وتكلفة التنقل"
+        - "المواصلات العامة خيار اقتصادي وآمن"
+        - "مدن مثل نيلاي أقل تكلفة من كوالالمبور"
+        - "اسأل عن الدفع بالأقساط حسب الفصول"
+    cta:
+      eyebrow: "YOUR PERSONAL ESTIMATE"
+      icon: shield
+      headline: "نعطيك تقديراً"
+      highlight: "لحالتك أنت"
+      body: "نحسب معك الرسوم والمعيشة والمصاريف الأساسية<br>حسب جامعتك ومدينتك — بشفافية ودون مفاجآت"
+      button: "اطلب تقديرك المجاني"
+      save: "احفظ المنشور — وأرسله لولي أمر يخطط للميزانية"
+
+  - id: transport
+    path: A-img
+    tag: "دليل التنقل"
+    hook: "كيف تتنقل في كوالالمبور كطالب؟"
+    hashtags: ["الدراسة_في_ماليزيا", "كوالالمبور", "مواصلات", "مختصر"]
+    cover:
+      eyebrow: "GETTING AROUND KUALA LUMPUR"
+      pixel: "5"
+      headline: "كيف تتنقل"
+      highlight: "في كوالالمبور؟"
+      subline: "دليل المواصلات للطالب —<br>أسرع وأوفر طريقة للوصول كل يوم"
+      keywords: ["kuala lumpur skyline train", "kuala lumpur city", "malaysia city transport"]
+    items:
+      - icon: metro
+        title: "قطارات MRT و LRT"
+        subtitle: "العمود الفقري"
+        body: "شبكة حديثة ومكيّفة تربط أغلب مناطق كوالالمبور والجامعات — <span class='hl2'>الأسرع في أوقات الزحام</span>"
+        tip: "ادفع ببطاقة Touch n Go — أسرع من شراء تذكرة كل مرة"
+        keywords: ["train platform station", "metro train city", "subway train modern"]
+      - icon: bus
+        title: "حافلات المدينة"
+        subtitle: "داخل كوالالمبور"
+        body: "حافلات تخدم وسط المدينة بخطوط منتظمة — <span class='hl2'>وبعض الخطوط مجانية</span> ضمن نطاق المدينة"
+        tip: "تحقق من الخط والتوقيت في التطبيق قبل الانتظار"
+        keywords: ["city bus stop", "public bus asia", "electric bus city"]
+      - icon: car
+        title: "تطبيقات النقل"
+        subtitle: "عند الحاجة"
+        body: "خيار مريح للتنقل المباشر أو ليلاً أو مع الأمتعة — <span class='hl2'>السعر يظهر قبل التأكيد</span>"
+        tip: "الأسعار ترتفع وقت الذروة — قارن مع القطار أولاً"
+        keywords: ["ride hailing phone car", "taxi app smartphone", "car city street night"]
+      - icon: plane
+        title: "قطار المطار"
+        subtitle: "المطار ↔ المدينة"
+        body: "ربط مباشر بين المطار ومحطة كوالالمبور المركزية — <span class='hl2'>الخيار الأسرع عند الوصول</span>"
+        tip: "احجز إلكترونياً قبل السفر لتوفير الوقت"
+        keywords: ["airport train platform", "airport express train", "airport terminal train"]
+      - icon: university
+        title: "القطار بين المدن"
+        subtitle: "رحلات أبعد"
+        body: "قطارات تربط كوالالمبور ببينانغ وإيبوه ومدن أخرى — <span class='hl2'>مريحة واقتصادية لعطلة نهاية الأسبوع</span>"
+        tip: "احجز مبكراً في المواسم — المقاعد تنفد بسرعة"
+        keywords: ["intercity train malaysia", "express train railway", "passenger train station"]
+    cta:
+      eyebrow: "SETTLE IN FASTER"
+      icon: card
+      headline: "أول أسبوع؟"
+      highlight: "نمشي معك خطوة بخطوة"
+      body: "من بطاقة المواصلات حتى السكن القريب من جامعتك —<br>واستشارتك الأولى مجانية بالكامل"
+      button: "تواصل معنا على واتساب"
+      save: "احفظ الدليل — وأرسله لصديق قادم إلى ماليزيا"
+
+  - id: housing
+    path: B
+    tag: "دليل السكن"
+    hook: "وش خياراتك للسكن كطالب في ماليزيا؟"
+    hashtags: ["الدراسة_في_ماليزيا", "سكن_طلابي", "كوالالمبور", "مختصر"]
+    cover:
+      eyebrow: "STUDENT HOUSING · MALAYSIA"
+      icon: key
+      pixel: "3"
+      headline: "خيارات السكن"
+      highlight: "للطالب في ماليزيا"
+      subline: "مقارنة صريحة بالمزايا والعيوب —<br>حتى تختار ما يناسب ميزانيتك فعلاً"
+    source: "أرقام تقريبية — تختلف حسب المدينة والموقع"
+    items:
+      - icon: university
+        title: "السكن الجامعي"
+        subtitle: "داخل الحرم · RM 500 – 900 شهرياً"
+        body: "قريب من القاعات بلا مواصلات، وبيئة طلابية منظمة — <span class='hl'>لكن المساحة والخصوصية أقل</span>، والأولوية للتسجيل المبكر"
+      - icon: users
+        title: "شقة مشتركة"
+        subtitle: "مع طلاب · RM 450 – 800 شهرياً"
+        body: "الخيار الأوفر مع تقاسم الفواتير — <span class='hl'>لكنه يعتمد على اختيار الشركاء</span>، وغالباً يحتاج عقداً وتأميناً"
+      - icon: home
+        title: "شقة خاصة"
+        subtitle: "وحدة مستقلة · RM 1,500+ شهرياً"
+        body: "خصوصية كاملة ومساحة أكبر ومناسب لمن يسكن مع عائلته — <span class='hl'>لكنه الأعلى تكلفة بفارق واضح</span>"
+    checklist:
+      eyebrow: "BEFORE YOU SIGN"
+      title: "قبل ما توقّع العقد"
+      lines:
+        - "اطلب صوراً حديثة أو جولة فيديو قبل الحجز"
+        - "اسأل: هل الفواتير والإنترنت مشمولة؟"
+        - "تحقق من المسافة للجامعة ومحطة القطار"
+        - "اقرأ العقد ومدة الإيجار ومبلغ التأمين"
+        - "لا تحوّل أي مبلغ قبل توثيق الجهة المؤجرة"
+    cta:
+      eyebrow: "WE HELP YOU SETTLE"
+      icon: key
+      headline: "ما تدوّر سكن وحدك —"
+      highlight: "نساعدك من هنا"
+      body: "نرشّح لك خيارات قريبة من جامعتك<br>وضمن ميزانيتك — واستشارتك الأولى مجانية"
+      button: "اسأل عن خيارات السكن"
+      save: "احفظ المنشور — وأرسله لصديق يدوّر سكن"
+
+  - id: dishes
+    path: A-img
+    tag: "دليل الأكل"
+    hook: "أكلات ماليزية لازم تجربها في أول شهر"
+    hashtags: ["الدراسة_في_ماليزيا", "أكل_حلال", "ماليزيا", "مختصر"]
+    cover:
+      eyebrow: "MALAYSIAN FOOD · HALAL"
+      pixel: "5"
+      headline: "أكلات ماليزية"
+      highlight: "لازم تجربها كطالب"
+      subline: "أطباق شعبية متوفرة حلال وبأسعار الطالب —<br>جرّبها في أول شهر لك"
+      keywords: ["malaysian food table", "asian food spread", "street food asia"]
+    items:
+      - icon: food
+        title: "ناسي ليماك"
+        subtitle: "Nasi Lemak · الطبق الوطني"
+        body: "أرز مطبوخ بحليب جوز الهند مع السامبال والبيض والفول السوداني — <span class='hl2'>أشهر إفطار ماليزي</span>"
+        tip: "جرّبه مع الدجاج المقلي — الخيار المفضل عند الطلاب"
+        keywords: ["nasi lemak", "coconut rice dish", "malaysian rice plate"]
+      - icon: food
+        title: "ساتاي"
+        subtitle: "Satay · مشاوي"
+        body: "أسياخ متبّلة ومشوية على الفحم مع صلصة الفول السوداني — <span class='hl2'>أقرب طعم للمشاوي الخليجية</span>"
+        tip: "يُقدّم غالباً مساءً في الأسواق الليلية"
+        keywords: ["satay skewers", "grilled skewers peanut sauce", "chicken skewers"]
+      - icon: food
+        title: "روتي تشاناي"
+        subtitle: "Roti Canai · مطاعم مامّاك"
+        body: "خبز مقرمش يُقدّم مع الكاري أو الدال — <span class='hl2'>رخيص ومتوفر على مدار اليوم</span>"
+        tip: "وجبة الطالب المثالية — متوفرة حتى بعد منتصف الليل"
+        keywords: ["roti canai", "flatbread curry", "indian flatbread"]
+      - icon: food
+        title: "ناسي كاندار"
+        subtitle: "Nasi Kandar · بينانغ"
+        body: "أرز مع تشكيلة كاري تختارها بنفسك — <span class='hl2'>وجبة دسمة بأسعار مناسبة</span>"
+        tip: "اختر بنفسك من العرض — وتحكّم في حجم وجبتك وسعرها"
+        keywords: ["nasi kandar", "rice curry plate", "curry rice meal"]
+      - icon: food
+        title: "تيه تاريك"
+        subtitle: "Teh Tarik · المشروب الوطني"
+        body: "شاي بالحليب يُسحب حتى تتكوّن رغوته — <span class='hl2'>طقس يومي في كل مطعم مامّاك</span>"
+        tip: "اطلبه كورانغ مانيس إذا تفضّله أقل سكراً"
+        keywords: ["teh tarik", "milk tea glass", "pulled tea malaysia"]
+    cta:
+      eyebrow: "EAT WELL · SPEND LESS"
+      icon: halal
+      headline: "أكل حلال في كل مكان —"
+      highlight: "وبأسعار تناسب الطالب"
+      body: "من أكثر ما يطمئن الأهل في ماليزيا —<br>ونساعدك من اختيار الجامعة حتى الاستقرار"
+      button: "تواصل معنا على واتساب"
+      save: "احفظ القائمة — وأرسلها لصديق قادم إلى ماليزيا"
+
+  - id: mistakes
+    path: A
+    tag: "تجنّبها"
+    hook: "أخطاء تكلّف وقتاً ومالاً عند التقديم"
+    hashtags: ["الدراسة_في_ماليزيا", "التقديم_الجامعي", "ابتعاث", "مختصر"]
+    cover:
+      eyebrow: "COMMON APPLICATION MISTAKES"
+      icon: alert
+      pixel: "6"
+      headline: "أخطاء يقع فيها الطلاب"
+      highlight: "عند التقديم"
+      subline: "أخطاء تكلّف وقتاً ومالاً —<br>وكلها يمكن تفاديها من البداية"
+    items:
+      - icon: shield
+        title: "اختيار الجامعة قبل التحقق من الاعتراف"
+        subtitle: ""
+        body: "كثيرون يختارون بالسعر أو الشهرة فقط — <span class='hl'>ثم يكتشفون لاحقاً أنها غير مدرجة</span> في القائمة الرسمية"
+        tip: "الصح: تحقق من حالة الجامعة قبل أي خطوة"
+      - icon: clock
+        title: "التقديم متأخراً"
+        subtitle: ""
+        body: "التقديم قبل أسابيع من بدء الفصل يعني <span class='hl'>مقاعد أقل وخصومات أقل ووقتاً ضيقاً للتأشيرة</span>"
+        tip: "الصح: ابدأ قبل ٤ – ٦ أشهر من موعد الدفعة"
+      - icon: money
+        title: "حساب الرسوم الدراسية فقط"
+        subtitle: ""
+        body: "الميزانية ليست رسوماً دراسية فقط — <span class='hl'>السكن والمعيشة والتأشيرة والتأمين</span> بنود أساسية تُنسى"
+        tip: "الصح: اطلب تقديراً شاملاً قبل اتخاذ القرار"
+      - icon: document
+        title: "مستندات ناقصة أو غير مترجمة"
+        subtitle: ""
+        body: "ملف ناقص = تأخير أسابيع. الشهادات وكشف الدرجات <span class='hl'>لها متطلبات محددة لكل جامعة</span>"
+        tip: "الصح: راجع قائمة المستندات قبل الإرسال، ورقة بورقة"
+      - icon: language
+        title: "تجاهل متطلب اللغة"
+        subtitle: ""
+        body: "بعض البرامج تشترط مستوى لغة معيناً — <span class='hl'>وقد تحتاج برنامج لغة قبل البدء الأكاديمي</span>"
+        tip: "الصح: اسأل عن متطلب اللغة من أول استشارة"
+      - icon: alert
+        title: "الدفع قبل التوثيق"
+        subtitle: ""
+        body: "أي عرض أو خصم شفهي بلا خطاب رسمي من الجامعة <span class='hl'>لا يُعتد به</span>"
+        tip: "الصح: لا تحوّل أي مبلغ قبل التأكد من الجهة المستلمة"
+    cta:
+      eyebrow: "DO IT RIGHT FROM DAY ONE"
+      icon: shield
+      headline: "لا تجرّب وتتعلّم —"
+      highlight: "ابدأ صح من أول مرة"
+      body: "نراجع ملفك ونتحقق من الاعتراف والمستندات<br>ونحدد التوقيت الأنسب لتقديمك"
+      button: "راجع ملفك مجاناً"
+      save: "احفظ المنشور — وأرسله لمن يستعد للتقديم"
+
+  - id: muslim-life
+    path: B-img
+    tag: "اعرف ماليزيا"
+    hook: "الحياة الإسلامية في ماليزيا — ما يطمئن الأهل"
+    hashtags: ["الدراسة_في_ماليزيا", "ماليزيا", "أكل_حلال", "مختصر"]
+    cover:
+      eyebrow: "MUSLIM LIFE IN MALAYSIA"
+      pixel: "5"
+      headline: "الحياة الإسلامية"
+      highlight: "في ماليزيا"
+      subline: "ما يطمئن الأهل قبل السفر —<br>وما يسهّل على الطالب حياته اليومية"
+      keywords: ["mosque malaysia", "masjid architecture", "mosque exterior"]
+    items:
+      - icon: mosque
+        title: "مساجد في كل مكان"
+        subtitle: "عبادة"
+        body: "من المسجد الوطني إلى مساجد الأحياء والجامعات — <span class='hl2'>ستجد مسجداً قريباً أينما سكنت</span>"
+        tip: "حدد أقرب مسجد لسكنك في أول أسبوع"
+        keywords: ["mosque minaret", "mosque building", "islamic architecture"]
+      - icon: users
+        title: "مصليات في كل مبنى"
+        subtitle: "راحة يومية"
+        body: "المولات والجامعات والمطارات فيها مصليات مخصصة — <span class='hl2'>لن تقلق بشأن الصلاة أثناء يومك</span>"
+        tip: "ابحث عن لوحة Surau — موجودة في أغلب المباني"
+        keywords: ["prayer room", "mosque interior carpet", "prayer hall"]
+      - icon: halal
+        title: "شهادة حلال رسمية"
+        subtitle: "طعام"
+        body: "المطاعم المعتمدة تحمل شهادة حلال من الجهة الرسمية — <span class='hl2'>علامة واضحة تريح الطالب وأهله</span>"
+        tip: "ابحث عن ملصق الشهادة عند مدخل المطعم"
+        keywords: ["halal food restaurant", "halal sign", "asian restaurant front"]
+      - icon: moon
+        title: "رمضان بأجواء مميزة"
+        subtitle: "مواسم"
+        body: "أسواق رمضانية ومساجد ممتلئة وأجواء عائلية — <span class='hl2'>تجربة قريبة من أجواء بلدك</span>"
+        tip: "بازار رمضان تجربة لا تفوتها"
+        keywords: ["ramadan bazaar", "ramadan lantern", "night market food"]
+      - icon: users
+        title: "مجتمع مسلم متنوع"
+        subtitle: "ثقافة"
+        body: "أغلبية مسلمة وجالية خليجية وعربية راسخة — <span class='hl2'>بيئة مألوفة تسهّل عليك الاندماج</span>"
+        tip: "انضم لمجموعات الطلاب العرب في جامعتك"
+        keywords: ["students campus together", "university students walking", "campus courtyard"]
+    cta:
+      eyebrow: "PEACE OF MIND FOR FAMILIES"
+      icon: health
+      headline: "بعيد عن بيتك —"
+      highlight: "قريب من قيمك"
+      body: "من أكثر ما يطمئن الأهل عند اختيار ماليزيا —<br>ونساعدك من اختيار الجامعة حتى الاستقرار"
+      button: "تواصل معنا على واتساب"
+      save: "احفظ المنشور — وأرسله لولي أمر يسأل عن ماليزيا"
+
+  - id: sim-internet
+    path: A
+    tag: "الاتصالات"
+    hook: "شريحة الجوال والإنترنت — أول أسبوع لك"
+    hashtags: ["الدراسة_في_ماليزيا", "كوالالمبور", "مختصر"]
+    cover:
+      eyebrow: "SIM · DATA · INTERNET"
+      icon: sim
+      headline: "الاتصالات"
+      highlight: "من أول يوم"
+      subline: "كيف توصل بالشبكة من ساعة وصولك —<br>وما الذي يحتاج عقداً وما الذي لا يحتاج"
+    items:
+      - icon: sim
+        title: "شريحة من المطار"
+        subtitle: "أول نقطة اتصال"
+        body: "أكشاك المشغلين في صالة الوصول تبيع شرائح مسبقة الدفع وتفعّلها في مكانها — <span class='hl'>الجواز مطلوب للتسجيل</span>، ولا تحتاج حساباً بنكياً محلياً"
+      - icon: globe
+        title: "اختيار المشغل"
+        subtitle: "التغطية تختلف خارج المدن"
+        body: "المشغلون الرئيسيون معروفون وتغطيتهم داخل كوالالمبور متقاربة — <span class='hl'>الفرق يظهر خارج المدن الكبيرة</span>، فاسأل عن التغطية في منطقة جامعتك تحديداً"
+      - icon: document
+        title: "مسبق الدفع أم فاتورة؟"
+        subtitle: "ابدأ بالمسبق"
+        body: "المسبق يناسب أشهرك الأولى بلا عقد ولا التزام — <span class='hl'>باقة الفاتورة عادة تطلب إثبات عنوان</span>، وهو ما لا يكون جاهزاً قبل استقرار سكنك"
+        tip: "نصيحة مختصر: احتفظ برقمك القديم فعّالاً أول أسبوع — رموز البنك تصل عليه"
+      - icon: home
+        title: "إنترنت السكن"
+        subtitle: "قبل ما توقّع"
+        body: "اسأل إن كان الإنترنت مشمولاً في الإيجار قبل التوقيع — <span class='hl'>الاشتراك المنزلي يرتبط بعقد بمدة محددة</span>، وقد لا يناسب سكناً قصيراً"
+    cta:
+      eyebrow: "YOUR FIRST WEEK"
+      icon: sim
+      headline: "أول أسبوعك —"
+      highlight: "نرتبه معك"
+      body: "نساعدك في ترتيب خطوات الوصول والسكن<br>واستشارتك الأولى مجانية"
+      button: "اسأل عن أول أسبوع"
+      save: "احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا"
+
+  - id: diesel-ron-unsubsidised-ron-prices
+    path: A
+    tag: معيشة الطلاب
+    hook: تحديثات أسعار الوقود الجديدة في كوالالمبور وتأثيرها على تنقلات عائلتك
+    hashtags:
+    - دراسة_في_ماليزيا
+    - عائلات_خليجية
+    - السكن_في_كوالالمبور
+    - مختصر_للاستشارات
+    cover:
+      eyebrow: WHAT CHANGED
+      icon: globe
+      headline: تغيرات أسعار
+      highlight: الوقود بماليزيا
+      subline: ما يجب على العائلة معرفته<br>عند التخطيط للتنقل اليومي
+    items:
+    - icon: globe
+      title: تعديل أسعار الوقود
+      subtitle: الديزل والبنزين
+      body: شهدت أسعار الديزل وأنواع البنزين غير المدعومة <span class='hl'>زيادات جديدة</span> في الفترة
+        الحالية.
+      tip: 'نصيحة مختصر: تابع التحديثات الأسبوعية للأسعار لتنظيم ميزانية المواصلات.'
+    - icon: globe
+      title: تكلفة التنقل
+      subtitle: الحياة اليومية
+      body: تؤثر هذه التغيرات مباشرة على <span class='hl'>تكاليف التوصيل</span> والمواصلات المدرسية والجامعية.
+      tip: 'نصيحة مختصر: فضل السكن القريب من المؤسسة التعليمية لتقليل الاعتماد على السيارات.'
+    - icon: globe
+      title: خيارات بديلة
+      subtitle: النقل العام
+      body: توفر شبكة القطارات والحافلات في كوالالمبور <span class='hl'>بدائل عملية</span> ومناسبة للعائلات
+        والطلاب.
+      tip: 'نصيحة مختصر: استخرج بطاقات المواصلات المخفضة الخاصة بالطلاب لتوفير النفقات.'
+    - icon: globe
+      title: التخطيط المالي
+      subtitle: ميزانية الأسرة
+      body: تساعدك دراسة النفقات المعيشية بدقة على <span class='hl'>إدارة المصروفات</span> خلال فترة الدراسة
+        بماليزيا.
+      tip: 'نصيحة مختصر: خدماتنا الاستشارية مجانية لمساعدتك في اختيار السكن الأنسب لميزانية عائلتك.'
+    cta:
+      eyebrow: TALK TO US
+      icon: globe
+      headline: هل تبحث عن سكن قريب من المدارس-
+      highlight: تواصل معنا اليوم
+      body: نحن هنا لمساعدتك في اختيار الموقع الأمثل لعائلتك<br>خدماتنا الاستشارية مجانية
+      button: احصل على استشارتك المجانية
+      save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا

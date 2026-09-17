@@ -1,0 +1,235 @@
+# Idea backlog for `python -m src.run go` and `discover`.
+#
+# These are ANGLES, not finished topics. The pipeline picks unused ones, checks
+# them against everything already published or drafted, and writes a draft for
+# you to fill in and verify.
+#
+# NAMING: ids are multi-word and describe the angle, not the subject. That
+# matters because one subject carries several posts — housing alone is worth a
+# comparison, a contract guide and a scam warning. "housing" as an id burns the
+# whole subject on one post and makes the output folders ambiguous.
+#
+# KEYWORDS: multi-word and Malaysian. A one-word query like "train" or "market"
+# returns the whole world — the first live run pulled Tokyo, Osaka and Basel
+# into a carousel about Kuala Lumpur. Name the place.
+
+ideas:
+  - id: student-visa-steps
+    tag: "دليل التأشيرة"
+    hook: "خطوات تأشيرة الطالب في ماليزيا — بالترتيب"
+    eyebrow: "STUDENT VISA · STEP BY STEP"
+    headline: "تأشيرة الطالب"
+    highlight: "خطوة بخطوة"
+    icon: document
+    items: 5
+    keywords: ["Kuala Lumpur international airport terminal", "Malaysia immigration arrival hall"]
+
+  - id: opening-bank-account
+    tag: "دليل مالي"
+    hook: "كيف تفتح حساباً بنكياً في ماليزيا كطالب؟"
+    eyebrow: "BANKING · FOR STUDENTS"
+    headline: "فتح حساب بنكي"
+    highlight: "كطالب دولي"
+    icon: bank
+    items: 4
+    keywords: ["Kuala Lumpur bank branch exterior", "Malaysia city office building"]
+
+  - id: sim-card-and-internet
+    tag: "الاتصالات"
+    hook: "شريحة الجوال والإنترنت — أول أسبوع لك"
+    eyebrow: "SIM · DATA · INTERNET"
+    headline: "الاتصالات"
+    highlight: "من أول يوم"
+    icon: sim
+    items: 4
+
+  - id: university-intake-calendar
+    tag: "مواعيد القبول"
+    hook: "متى تفتح فصول القبول في الجامعات الماليزية؟"
+    eyebrow: "INTAKES · ACADEMIC YEAR"
+    headline: "مواعيد الفصول"
+    highlight: "ومتى تقدّم"
+    icon: calendar
+    items: 4
+
+  - id: english-entry-requirements
+    tag: "متطلبات اللغة"
+    hook: "كم درجة الآيلتس المطلوبة؟ وهل لها بدائل؟"
+    eyebrow: "ENGLISH ENTRY REQUIREMENTS"
+    headline: "متطلبات اللغة"
+    highlight: "والبدائل المقبولة"
+    icon: language
+    items: 4
+
+  - id: foundation-versus-diploma
+    tag: "مسارات"
+    hook: "الفاونديشن أو الدبلوم — أيهما يناسبك؟"
+    eyebrow: "FOUNDATION VS DIPLOMA"
+    headline: "الفاونديشن"
+    highlight: "أو الدبلوم؟"
+    icon: certificate
+    items: 4
+
+  - id: degree-recognition-saudi
+    tag: "الاعتراف"
+    hook: "هل الشهادة معترف بها في السعودية؟"
+    eyebrow: "RECOGNITION · WHAT TO CHECK"
+    headline: "الاعتراف"
+    highlight: "بالشهادة"
+    icon: shield
+    items: 4
+
+  - id: choosing-your-campus
+    tag: "جولة"
+    hook: "كيف تختار الجامعة قبل ما تسافر؟"
+    eyebrow: "CHOOSING A CAMPUS"
+    headline: "اختيار الجامعة"
+    highlight: "قبل السفر"
+    icon: university
+    items: 5
+    keywords: ["Malaysia university campus building", "Kuala Lumpur college architecture"]
+
+  - id: part-time-work-rules
+    tag: "العمل الجزئي"
+    hook: "هل يسمح للطالب بالعمل في ماليزيا؟"
+    eyebrow: "PART-TIME WORK RULES"
+    headline: "العمل الجزئي"
+    highlight: "ما المسموح؟"
+    icon: briefcase
+    items: 4
+
+  - id: student-health-insurance
+    tag: "التأمين الصحي"
+    hook: "التأمين الصحي والرعاية الطبية للطالب"
+    eyebrow: "HEALTH COVER · STUDENTS"
+    headline: "التأمين الصحي"
+    highlight: "وما يغطيه"
+    icon: health
+    items: 4
+
+  - id: moving-with-your-family
+    tag: "للعائلة"
+    hook: "ينتقل الطالب مع عائلته — وش يحتاج؟"
+    eyebrow: "MOVING WITH FAMILY"
+    headline: "الانتقال"
+    highlight: "مع العائلة"
+    icon: users
+    items: 5
+
+  - id: weather-and-what-to-pack
+    tag: "الاستعداد"
+    hook: "طقس ماليزيا — وش تلبس وتحزم فعلاً؟"
+    eyebrow: "CLIMATE · WHAT TO PACK"
+    headline: "الطقس"
+    highlight: "وما تحزمه"
+    icon: plane
+    items: 4
+    keywords: ["Kuala Lumpur rainy street monsoon", "Malaysia tropical city skyline clouds"]
+
+  - id: finding-arabic-community
+    tag: "المجتمع العربي"
+    hook: "وين تلقى المجتمع العربي في كوالالمبور؟"
+    eyebrow: "ARABIC COMMUNITY · KL"
+    headline: "المجتمع العربي"
+    highlight: "في كوالالمبور"
+    icon: users
+    items: 4
+
+  - id: monthly-grocery-shopping
+    tag: "التسوق"
+    hook: "التسوق والبقالة — كم تكلف شهرياً؟"
+    eyebrow: "GROCERIES · MONTHLY"
+    headline: "التسوق"
+    highlight: "والبقالة"
+    icon: food
+    items: 4
+    keywords: ["Kuala Lumpur supermarket aisle Malaysia", "Malaysian wet market produce stall"]
+
+  - id: how-classes-actually-work
+    tag: "أكاديمي"
+    hook: "نظام الدراسة الماليزي — وش يختلف؟"
+    eyebrow: "HOW STUDY WORKS HERE"
+    headline: "نظام الدراسة"
+    highlight: "وش يختلف؟"
+    icon: book
+    items: 4
+
+  - id: options-after-graduation
+    tag: "بعد التخرج"
+    hook: "تخرجت — وش خياراتك بعدها؟"
+    eyebrow: "AFTER GRADUATION"
+    headline: "بعد التخرج"
+    highlight: "وش بعدها؟"
+    icon: graduation
+    items: 4
+
+  - id: scams-targeting-new-students
+    tag: "تحذير"
+    hook: "احتيالات يتعرض لها الطلاب الجدد — واحذر منها"
+    eyebrow: "COMMON SCAMS"
+    headline: "احتيالات"
+    highlight: "احذر منها"
+    icon: alert
+    items: 5
+
+  - id: driving-licence-in-malaysia
+    tag: "القيادة"
+    hook: "هل تقدر تسوق في ماليزيا برخصتك؟"
+    eyebrow: "DRIVING · LICENCE RULES"
+    headline: "رخصة القيادة"
+    highlight: "هل تصلح؟"
+    icon: car
+    items: 4
+    keywords: ["Kuala Lumpur highway traffic Malaysia", "Malaysian city road signage"]
+
+  - id: ramadan-in-kuala-lumpur
+    tag: "رمضان"
+    hook: "رمضان في كوالالمبور — كيف يكون؟"
+    eyebrow: "RAMADAN IN KL"
+    headline: "رمضان"
+    highlight: "في كوالالمبور"
+    icon: moon
+    items: 4
+    keywords: ["Kuala Lumpur mosque evening lights", "Malaysia ramadan bazaar street food"]
+
+  - id: cutting-monthly-expenses
+    tag: "توفير"
+    hook: "كيف تخفّض مصاريفك الشهرية بدون معاناة؟"
+    eyebrow: "SPEND LESS · LIVE BETTER"
+    headline: "توفير المصاريف"
+    highlight: "بدون معاناة"
+    icon: money
+    items: 5
+
+  # --- second angles on subjects the bank already covers -----------------
+  # Deliberately revisiting a subject that already has a post. Dedup allows
+  # these because the angle differs; it would block a reworded repeat.
+
+  - id: signing-a-rental-contract
+    tag: "عقد الإيجار"
+    hook: "قبل ما توقّع عقد الإيجار — اقرأ هذا"
+    eyebrow: "RENTAL CONTRACTS"
+    headline: "عقد الإيجار"
+    highlight: "قبل التوقيع"
+    icon: document
+    items: 5
+    keywords: ["Kuala Lumpur apartment building exterior", "Malaysia condominium residential tower"]
+
+  - id: cheap-eats-near-campus
+    tag: "أكل رخيص"
+    hook: "وين تاكل رخيص وقريب من الجامعة؟"
+    eyebrow: "EATING ON A BUDGET"
+    headline: "أكل رخيص"
+    highlight: "قريب منك"
+    icon: food
+    items: 5
+    keywords: ["Malaysian mamak restaurant food", "Kuala Lumpur hawker stall street food"]
+
+  - id: first-month-cost-breakdown
+    tag: "الشهر الأول"
+    hook: "الشهر الأول أغلى شهر — وهذي أسبابه"
+    eyebrow: "YOUR FIRST MONTH"
+    headline: "الشهر الأول"
+    highlight: "أغلى شهر"
+    icon: money
+    items: 5

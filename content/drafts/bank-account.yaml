@@ -1,0 +1,46 @@
+# DRAFT — not in the queue yet.
+#
+# Every figure below is a PLACEHOLDER. Replace each one with a verified
+# number and cite where it came from, then run:
+#     python -m src.run approve --id bank-account
+#
+# Standing rule 7: no invented statistics, percentages or rankings.
+
+topics:
+  - id: bank-account
+    path: A
+    tag: "دليل مالي"
+    hook: "كيف تفتح حساباً بنكياً في ماليزيا كطالب؟"
+    hashtags: ["الدراسة_في_ماليزيا", "مختصر"]
+    cover:
+      eyebrow: "BANKING · FOR STUDENTS"
+      icon: bank
+      headline: "فتح حساب بنكي"
+      highlight: "كطالب دولي"
+      subline: "TODO — one or two lines on why this matters"
+    source: "TODO — where these figures come from, or delete this line"
+    items:
+      - icon: bank
+        title: "TODO — point 1"
+        subtitle: "TODO"
+        body: "TODO — <span class='hl'>keep one phrase emphasised</span>"
+      - icon: bank
+        title: "TODO — point 2"
+        subtitle: "TODO"
+        body: "TODO — <span class='hl'>keep one phrase emphasised</span>"
+      - icon: bank
+        title: "TODO — point 3"
+        subtitle: "TODO"
+        body: "TODO — <span class='hl'>keep one phrase emphasised</span>"
+      - icon: bank
+        title: "TODO — point 4"
+        subtitle: "TODO"
+        body: "TODO — <span class='hl'>keep one phrase emphasised</span>"
+    cta:
+      eyebrow: "TALK TO US"
+      icon: bank
+      headline: "TODO —"
+      highlight: "TODO"
+      body: "TODO<br>استشارتك الأولى مجانية"
+      button: "TODO"
+      save: "احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا"

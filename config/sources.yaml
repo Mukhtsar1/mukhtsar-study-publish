@@ -1,0 +1,88 @@
+# Live sources for topic discovery.
+#
+# `python -m src.run sources --check` tests every feed and reports which ones
+# answer. Do that before trusting this list: feed URLs move and die, and a dead
+# feed shrinks your ideas silently rather than erroring.
+#
+# A HEADLINE IS A PROMPT, NOT A FACT. Nothing fetched here reaches a slide. The
+# idea stub carries the headline and the link so you can read the original and
+# write the post yourself.
+
+# How old a story may be and still count as a topic worth posting.
+max_age_days: 45
+
+# An entry must contain at least one of these to be considered.
+include_keywords:
+  - malaysia
+  - malaysian
+  - kuala lumpur
+  - emgs
+  - student pass
+  - student visa
+  - international student
+  - university
+  - universiti
+  - higher education
+  - tuition fee
+  - intake
+  - scholarship
+  - mqa
+  - study abroad
+  - saudi
+
+# ...and none of these, or it is dropped.
+exclude_keywords:
+  - football
+  - badminton
+  - celebrity
+  - horoscope
+  - lottery
+  - betting
+  - crime
+  - murder
+
+feeds:
+  - name: The Star — Education
+    url: https://www.thestar.com.my/rss/News/Education
+    tag: "مستجدات"
+    eyebrow: "WHAT CHANGED"
+    icon: book
+    enabled: true
+
+  - name: New Straits Times — Education
+    url: https://www.nst.com.my/news/education/rss
+    tag: "مستجدات"
+    eyebrow: "WHAT CHANGED"
+    icon: book
+    enabled: true
+
+  - name: Malay Mail — Malaysia
+    url: https://www.malaymail.com/feed/rss/malaysia
+    tag: "مستجدات"
+    eyebrow: "WHAT CHANGED"
+    icon: globe
+    enabled: true
+
+  - name: Free Malaysia Today
+    url: https://www.freemalaysiatoday.com/feed/
+    tag: "مستجدات"
+    eyebrow: "WHAT CHANGED"
+    icon: globe
+    enabled: true
+
+  - name: Google News — Malaysia international students
+    url: https://news.google.com/rss/search?q=malaysia+international+students+university&hl=en-MY&gl=MY&ceid=MY:en
+    tag: "مستجدات"
+    eyebrow: "WHAT CHANGED"
+    icon: alert
+    enabled: true
+
+  - name: Google News — EMGS student pass
+    url: https://news.google.com/rss/search?q=EMGS+OR+%22student+pass%22+malaysia&hl=en-MY&gl=MY&ceid=MY:en
+    tag: "التأشيرة"
+    eyebrow: "VISA NEWS"
+    icon: document
+    enabled: true
+
+  # Add your own. Any RSS or Atom URL works — a university newsroom, a
+  # ministry announcements page, a Saudi scholarship bulletin.
