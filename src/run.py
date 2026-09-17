@@ -153,7 +153,115 @@ def cmd_build(args) -> str:
     print(result.report())
     if not result.ok:
         raise SystemExit("QA failed — nothing will be published.")
+
+    if getattr(args, "guide", True):
+        _offer_schedule(run_id, OUT / run_id)
     return run_id
+
+
+def _offer_schedule(run_id: str, out_dir: Path) -> None:
+    """
+    Ask whether to queue this build, right after it renders.
+
+    The review still has to happen — the prompt opens the folder first and
+    only accepts "yes" as a statement that you have looked. What it removes is
+    retyping a run id into a second command, not the reading.
+    """
+    meta = {}
+    meta_path = out_dir / "meta.json"
+    if meta_path.exists():
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            pass
+    figures = meta.get("figures") or []
+
+    print("\n" + "─" * 66)
+    if meta.get("reviewed") is False:
+        print("  This was written by a model. Nobody has read it yet.")
+    if figures:
+        print(f"  Unverified numbers on it: {', '.join(figures)}")
+    print(f"  Opening out\\{run_id} …")
+    try:
+        os.startfile(str(out_dir))                     # noqa: S606 (Windows)
+    except (AttributeError, OSError):
+        print(f"  Open it yourself: {out_dir}")
+
+    print("─" * 66)
+    try:
+        answer = _ask("Read the slides — schedule this post?",
+                      ["y", "n"], "n")
+    except SystemExit:
+        answer = "n"
+
+    if answer != "y":
+        print("\n  Not scheduled. When you are ready:")
+        print(f"    python -m src.run schedule --id {run_id} --checked")
+        return
+
+    from src import schedule as sch
+    when_raw = input('  When? Enter for the next slot, or "2026-09-20 21:00": '
+                     ).strip()
+    try:
+        when = sch.parse_when(when_raw) if when_raw else sch.next_slot(sch.load())
+        _mark_checked(run_id)
+        entry = sch.add(run_id, when, meta.get("topic", ""))
+    except sch.ScheduleError as exc:
+        print(f"\n  Not scheduled: {exc}")
+        return
+
+    ksa, myt = sch.fmt(entry["at"])
+    print(f"\n  Scheduled for {ksa} KSA ({myt} Malaysia)")
+    print("  Pushing to the image host…")
+    ok, msg = sch.push(run_id)
+    print("  Images are live." if ok else f"  ! Push failed: {msg}")
+    _show_queue(sch)
+
+
+def _show_queue(sch) -> None:
+    queue = sch.load()
+    pending = [e for e in queue if e["status"] == "pending"]
+    if not pending:
+        return
+    print("\nSCHEDULED")
+    print("-" * 74)
+    print(f"  {'WHEN (KSA)':<22} {'MY':<7} {'RUN ID':<40}")
+    print("-" * 74)
+    for e in pending:
+        ksa, myt = sch.fmt(e["at"])
+        print(f"  {ksa:<22} {myt:<7} {e['run_id']:<40}")
+    print()
+
+
+def _print_next_steps(run_id: str, out_dir: Path) -> None:
+    """
+    What to do now. A build that renders successfully still needs reading,
+    scheduling and pushing before anything reaches Instagram, and none of that
+    is obvious from a 'rendered 6 slides' message.
+    """
+    meta = {}
+    meta_path = out_dir / "meta.json"
+    if meta_path.exists():
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            pass
+    unread = meta.get("reviewed") is False
+    figures = meta.get("figures") or []
+
+    print("\n" + "─" * 66)
+    print("NEXT")
+    print("─" * 66)
+    print(f"  1. Read the slides       explorer out\\{run_id}")
+    if unread:
+        print("     Written by a model — nobody has read it yet.")
+    if figures:
+        print(f"     Unverified numbers on it: {', '.join(figures)}")
+    print(f"  2. Schedule it           python -m src.run schedule "
+          f"--id {run_id} --checked")
+    print( "     Scheduling pushes the images for you.")
+    print("\n  Queue:  python -m src.run schedule")
+    print("─" * 66)
 
 
 # ---------------------------------------------------------------- publish
@@ -231,6 +339,7 @@ def cmd_publish(args) -> None:
 def cmd_auto(args) -> None:
     args.topic = None
     args.path = None
+    args.guide = False
     run_id = cmd_build(args)
     args.id = run_id
     cmd_publish(args)
@@ -650,17 +759,7 @@ def cmd_go(args) -> None:
         meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2),
                              encoding="utf-8")
 
-    if kind == "fresh":
-        print("\n  " + "-" * 60)
-        if figures:
-            print("  ! Numbers survived the no-figures rule:")
-            for f in figures:
-                print(f"      {f}")
-            print("  ! Nothing has checked whether these are true.")
-        print("  Read the slides before publishing. Nobody has read them yet.")
-        print(f"  When you have:  python -m src.run publish --id {run_id} "
-              f"--checked")
-        print("  " + "-" * 60)
+
 
 
 # ---------------------------------------------------------------- sources
@@ -751,9 +850,23 @@ def cmd_schedule(args) -> None:
         ksa, myt = sch.fmt(entry["at"])
         print(f"Scheduled {args.id}")
         print(f"  {ksa} KSA   ({myt} Malaysia)")
-        print("\nRemember to push before it fires — Instagram fetches the "
-              "images\nfrom the public repo, not from this machine:")
-        print("  git add -A; git commit -m \"Add carousel\"; git push")
+
+        if args.no_push:
+            print("\n  ! Not pushed (--no-push). Instagram fetches the images "
+                  "from the\n    public repo, so this will fail at its slot "
+                  "until you push.")
+            return
+
+        print("\n  Pushing to the image host…")
+        ok, msg = sch.push(args.id)
+        if ok:
+            print("  Images are live. Nothing else to do.")
+        else:
+            print(f"  ! Push failed: {msg}")
+            print("  ! The post will fail at its slot until the images are "
+                  "hosted.")
+            print("    Fix it with:  git add -A; "
+                  "git commit -m \"Add carousel\"; git push")
         return
 
     # default: show the queue
@@ -770,13 +883,7 @@ def cmd_schedule(args) -> None:
     donelist = [e for e in queue if e["status"] != "pending"]
 
     if pending:
-        print("\nSCHEDULED")
-        print("-" * 74)
-        print(f"  {'WHEN (KSA)':<22} {'MY':<7} {'RUN ID':<40}")
-        print("-" * 74)
-        for e in pending:
-            ksa, myt = sch.fmt(e["at"])
-            print(f"  {ksa:<22} {myt:<7} {e['run_id']:<40}")
+        _show_queue(sch)
     if donelist:
         print("\nDONE")
         print("-" * 74)
@@ -807,7 +914,7 @@ def cmd_publish_due(args) -> None:
         ksa, _ = sch.fmt(entry["at"])
         print(f"\n{run_id}  (slot {ksa} KSA)")
         try:
-            args.id, args.checked = run_id, True
+            args.id, args.checked, args.guide = run_id, True, False
             cmd_publish(args)
             meta_path = OUT / run_id / "meta.json"
             media = None
@@ -863,6 +970,8 @@ def main() -> None:
     sc.add_argument("--checked", action="store_true",
                     help="confirm you have read every slide")
     sc.add_argument("--cancel", help="run id to remove from the queue")
+    sc.add_argument("--no-push", action="store_true",
+                    help="do not commit and push the build")
     sc.set_defaults(func=cmd_schedule)
 
     pd = sub.add_parser("publish-due",

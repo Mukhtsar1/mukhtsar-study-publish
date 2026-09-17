@@ -148,6 +148,43 @@ def mark(run_id: str, status: str, media_id: str | None = None) -> None:
     save(queue)
 
 
+def push(run_id: str) -> tuple[bool, str]:
+    """
+    Commit and push the build and the queue.
+
+    Scheduling without pushing produces a post that fails at its slot with a
+    404 nobody is awake to see, so this is not left to the operator to
+    remember. Returns (ok, message) rather than raising: a failed push is
+    worth reporting loudly, but the schedule entry itself is still valid.
+    """
+    import subprocess
+
+    def run(*args) -> subprocess.CompletedProcess:
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True,
+                              text=True, timeout=180)
+
+    if not (ROOT / ".git").exists():
+        return False, "this folder is not a git repository"
+    if run("remote").stdout.strip() == "":
+        return False, "no git remote is configured"
+
+    add = run("add", "out", "content/schedule.json")
+    if add.returncode != 0:
+        return False, add.stderr.strip()[:200]
+
+    staged = run("diff", "--cached", "--name-only").stdout.strip()
+    if staged:
+        commit = run("commit", "-m", f"Schedule {run_id}")
+        if commit.returncode != 0:
+            return False, commit.stderr.strip()[:200] or commit.stdout[:200]
+
+    pushed = run("push")
+    if pushed.returncode != 0:
+        return False, (pushed.stderr.strip()[:300]
+                       or "push failed — check your credentials")
+    return True, "pushed"
+
+
 def due(now: datetime | None = None) -> list[dict]:
     now = now or datetime.now(timezone.utc)
     return [e for e in load()
