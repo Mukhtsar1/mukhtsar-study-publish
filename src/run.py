@@ -187,23 +187,33 @@ def _offer_schedule(run_id: str, out_dir: Path) -> None:
     except (AttributeError, OSError):
         print(f"  Open it yourself: {out_dir}")
 
+    from src import schedule as sch
+
+    # Show the slot it would take, so "yes" is an informed answer and there is
+    # no second question. Enter accepts.
+    try:
+        when = sch.next_slot(sch.load())
+        ksa_p, myt_p = sch.fmt(when.isoformat(timespec="minutes"))
+        print(f"  Next free slot: {ksa_p} KSA ({myt_p} Malaysia)")
+    except sch.ScheduleError as exc:
+        print(f"  ! No slot available: {exc}")
+        return
+
     print("─" * 66)
     try:
-        answer = _ask("Read the slides — schedule this post?",
-                      ["y", "n"], "n")
+        answer = _ask("Read the slides — schedule it for that slot?",
+                      ["y", "n"], "y")
     except SystemExit:
         answer = "n"
 
     if answer != "y":
         print("\n  Not scheduled. When you are ready:")
         print(f"    python -m src.run schedule --id {run_id} --checked")
+        print(f"    python -m src.run schedule --id {run_id} "
+              f'--at "2026-09-20 21:00" --checked')
         return
 
-    from src import schedule as sch
-    when_raw = input('  When? Enter for the next slot, or "2026-09-20 21:00": '
-                     ).strip()
     try:
-        when = sch.parse_when(when_raw) if when_raw else sch.next_slot(sch.load())
         _mark_checked(run_id)
         entry = sch.add(run_id, when, meta.get("topic", ""))
     except sch.ScheduleError as exc:
