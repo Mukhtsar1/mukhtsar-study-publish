@@ -143,3 +143,45 @@ def public_urls(out_dir: Path, run_id: str, dry_run: bool = False) -> list[str]:
                                "fetch images from a public URL.")
     pngs = sorted(Path(out_dir).glob("*.png"))
     return [f"{base}/{run_id}/{p.name}" for p in pngs]
+
+
+def check_reachable(urls: list[str]) -> None:
+    """
+    Confirm the images are actually served before asking Instagram for them.
+
+    A build that has not been pushed yet 404s, and Instagram reports that as
+    "Only photo or video can be accepted as media type" — which says nothing
+    about the real cause. One HEAD request turns that into a clear message.
+    """
+    if not urls:
+        raise PublishError("No images to publish.")
+
+    url = urls[0]
+    try:
+        r = requests.head(url, timeout=15, allow_redirects=True)
+        if r.status_code == 405:                      # HEAD not allowed
+            r = requests.get(url, timeout=20, stream=True)
+    except requests.RequestException as exc:
+        raise PublishError(
+            f"Could not reach {url}\n  {exc}\n"
+            f"  Instagram fetches images over the internet — if you cannot "
+            f"reach this, neither can it.") from exc
+
+    if r.status_code == 404:
+        raise PublishError(
+            f"{url}\n  returns 404 — this build is not published to the "
+            f"image host yet.\n"
+            f"  If you are hosting on GitHub, push it first:\n"
+            f"    git add -A\n"
+            f"    git commit -m \"Add carousel\"\n"
+            f"    git push")
+    if r.status_code != 200:
+        raise PublishError(
+            f"{url}\n  returns HTTP {r.status_code}. Instagram needs a public "
+            f"URL that answers 200.")
+
+    ctype = (r.headers.get("Content-Type") or "").lower()
+    if "image" not in ctype:
+        raise PublishError(
+            f"{url}\n  answers 200 but serves '{ctype}', not an image. "
+            f"A GitHub *blob* URL returns HTML — use raw.githubusercontent.com.")

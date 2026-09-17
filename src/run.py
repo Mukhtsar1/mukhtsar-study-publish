@@ -207,6 +207,8 @@ def cmd_publish(args) -> None:
             json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 
     urls = publish.public_urls(out_dir, run_id, dry_run=args.dry_run)
+    if not args.dry_run:
+        publish.check_reachable(urls)
     print(f"Publishing {len(urls)} slides for {run_id}…")
     res = publish.publish_carousel(urls, caption, dry_run=args.dry_run)
     print(json.dumps(res, ensure_ascii=False, indent=2))
