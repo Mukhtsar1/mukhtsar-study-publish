@@ -129,11 +129,24 @@ def _blob(entry: dict) -> str:
     return f"{entry['title']} {entry.get('summary','')}".lower()
 
 
-def relevant(entry: dict, include: list[str], exclude: list[str]) -> bool:
+def relevant(entry: dict, topic_words: list[str], geo_words: list[str],
+             exclude: list[str]) -> bool:
+    """
+    An entry must name a TOPIC and a PLACE, not just one of them.
+
+    Matching on "malaysia" alone was the bug: every article in a Malaysian
+    news feed says Malaysia, so a bomb scare and an electricity bill came
+    through as education topics. The country word qualifies a story, it does
+    not make one.
+    """
     text = _blob(entry)
     if any(x.lower() in text for x in exclude):
         return False
-    return any(i.lower() in text for i in include)
+    if not any(t.lower() in text for t in topic_words):
+        return False
+    if geo_words and not any(g.lower() in text for g in geo_words):
+        return False
+    return True
 
 
 def recent(entry: dict, max_age_days: int) -> bool:
@@ -168,7 +181,8 @@ def gather(max_items: int = 6) -> tuple[list[dict], list[tuple[str, str]]]:
                visible rather than silently shrinking the result
     """
     cfg = load_config()
-    include = cfg.get("include_keywords", [])
+    topic_words = cfg.get("topic_keywords", [])
+    geo_words = cfg.get("geo_keywords", [])
     exclude = cfg.get("exclude_keywords", [])
     max_age = int(cfg.get("max_age_days", 45))
     seen = load_seen()
@@ -203,7 +217,8 @@ def gather(max_items: int = 6) -> tuple[list[dict], list[tuple[str, str]]]:
                 break
             if e["link"] in seen:
                 continue
-            if not recent(e, max_age) or not relevant(e, include, exclude):
+            if not recent(e, max_age) or not relevant(
+                    e, topic_words, geo_words, exclude):
                 continue
 
             slug = slugify(e["title"])
