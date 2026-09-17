@@ -1,1 +1,37 @@
-{"published": [], "rotation_index": 0}
+{
+  "published": [
+    {
+      "topic": "costs",
+      "run_id": "2026-09-16-costs",
+      "path": "A",
+      "media_id": "17905792134327223",
+      "at": "2026-09-17T18:21:53.584127"
+    },
+    {
+      "topic": "transport",
+      "at": "2026-09-17T18:29:08.161612",
+      "note": "posted manually before the pipeline"
+    },
+    {
+      "topic": "housing",
+      "at": "2026-09-17T18:29:08.161635",
+      "note": "posted manually before the pipeline"
+    },
+    {
+      "topic": "dishes",
+      "at": "2026-09-17T18:29:08.161637",
+      "note": "posted manually before the pipeline"
+    },
+    {
+      "topic": "mistakes",
+      "at": "2026-09-17T18:29:08.161638",
+      "note": "posted manually before the pipeline"
+    },
+    {
+      "topic": "muslim-life",
+      "at": "2026-09-17T18:29:08.161639",
+      "note": "posted manually before the pipeline"
+    }
+  ],
+  "rotation_index": 1
+}

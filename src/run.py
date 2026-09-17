@@ -244,8 +244,11 @@ def cmd_status(_args) -> None:
     if s["published"]:
         print("\nRecent:")
         for p in s["published"][-5:]:
-            print(f"  {p['at'][:10]}  {p['topic']:<16} {p['path']:<6} "
-                  f"{p.get('media_id') or ''}")
+            # entries added by hand (backfilling posts made before the
+            # pipeline existed) carry no path or media_id
+            note = p.get("media_id") or p.get("note", "")
+            print(f"  {p.get('at', '')[:10]}  {p.get('topic', '?'):<20} "
+                  f"{p.get('path', '—'):<6} {note}")
     try:
         from src import publish
         print("\nPublishing quota:", publish.rate_limit_usage())
