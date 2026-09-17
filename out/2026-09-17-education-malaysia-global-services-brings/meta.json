@@ -1,7 +1,7 @@
 {
   "run_id": "2026-09-17-education-malaysia-global-services-brings",
   "topic": "education-malaysia-global-services-brings",
-  "path": "B",
+  "path": "A",
   "slides": [
     "00_cover.png",
     "01_item1.png",
@@ -10,7 +10,5 @@
     "04_item4.png",
     "05_cta.png"
   ],
-  "built": "2026-09-17T19:48:54.069306",
-  "reviewed": true,
-  "reviewed_at": "2026-09-17T19:49"
+  "built": "2026-09-17T21:45:26.036500"
 }

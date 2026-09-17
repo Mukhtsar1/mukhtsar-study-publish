@@ -496,3 +496,63 @@ topics:
       body: تواصل معنا للحصول على استشارة تعليمية مخصصة لعائلتك.<br>ندعمك في كافة تفاصيل رحلتك الدراسية.
       button: اطلب استشارتك التعليمية الآن
       save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا
+
+  - id: opening-bank-account
+    path: A
+    tag: دليلك الدراسي
+    hook: تعرف على خطوات فتح الحساب البنكي في ماليزيا لتيسير حياتك الدراسية.
+    hashtags:
+    - الدراسة_في_ماليزيا
+    - الطلاب_الخليجيون
+    - استشارات_تعليمية
+    - الحياة_في_كوالالمبور
+    cover:
+      eyebrow: BANKING · FOR STUDENTS
+      icon: bank
+      headline: فتح حساب بنكي
+      highlight: للطلاب في ماليزيا
+      subline: خطوات أساسية لتسهيل معاملاتك المالية<br>خلال مسيرتك الدراسية
+      keywords:
+      - Kuala Lumpur bank branch exterior
+      - Malaysia city office building
+    items:
+    - icon: bank
+      title: قبول الجامعة
+      subtitle: الخطوة الأولى
+      body: يجب عليك الحصول على <span class='hl'>خطاب القبول الرسمي</span> من جامعتك الماليزية أولاً.
+      tip: 'نصيحة مختصر: احتفظ بنسخ أصلية من كافة المستندات المطلوبة.'
+      keywords:
+      - Kuala Lumpur bank branch exterior
+      - Malaysia city office building
+    - icon: bank
+      title: تأشيرة الطالب
+      subtitle: المستند المطلوب
+      body: تأكد من اكتمال إجراءات <span class='hl'>تأشيرة الطالب الرسمية</span> قبل التوجه إلى البنك.
+      tip: 'نصيحة مختصر: استفسر من مكتب العلاقات الدولية في جامعتك عن البنوك المفضلة.'
+      keywords:
+      - Kuala Lumpur bank branch exterior
+      - Malaysia city office building
+    - icon: bank
+      title: مستندات الإقامة
+      subtitle: إثبات العنوان
+      body: ستحتاج إلى تقديم <span class='hl'>عقد الإيجار المعتمد</span> كإثبات لمحل سكنك الحالي.
+      tip: 'نصيحة مختصر: تأكد من صحة العنوان المدون في العقد.'
+      keywords:
+      - Kuala Lumpur bank branch exterior
+      - Malaysia city office building
+    - icon: bank
+      title: الإيداع النقدي
+      subtitle: تفعيل الحساب
+      body: يتطلب فتح الحساب القيام بـ <span class='hl'>إيداع مبلغ أولي</span> حسب متطلبات البنك المختار.
+      tip: 'نصيحة مختصر: خدماتنا الاستشارية مجانية لمساعدتك في كافة الخطوات.'
+      keywords:
+      - Kuala Lumpur bank branch exterior
+      - Malaysia city office building
+    cta:
+      eyebrow: TALK TO US
+      icon: bank
+      headline: هل تحتاج إلى مساعدة في ترتيب خطواتك الدراسية -
+      highlight: تواصل معنا اليوم
+      body: فريقنا جاهز للإجابة على استفساراتكم بكل دقة<br>خدماتنا الاستشارية مجانية لعائلاتنا الكريمة
+      button: احصل على استشارتك المجانية
+      save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا

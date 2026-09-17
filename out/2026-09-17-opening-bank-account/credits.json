@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "Kuala Lumpur bank branch exterior",
+      "Malaysia city office building"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true
+  },
+  "01_item1.png": {
+    "pexels_id": 30123502,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/calm-kuala-lumpur-cityscape-at-blue-hour-30123502/",
+    "keywords": [
+      "Kuala Lumpur bank branch exterior",
+      "Malaysia city office building"
+    ],
+    "description": "Peaceful view of Kuala Lumpur's skyline during blue hour with city lights.",
+    "needs_review": false,
+    "place_confirmed": true
+  },
+  "02_item2.png": {
+    "pexels_id": 37723030,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/aerial-view-of-kuala-lumpur-skyline-on-a-clear-day-37723030/",
+    "keywords": [
+      "Kuala Lumpur bank branch exterior",
+      "Malaysia city office building"
+    ],
+    "description": "A stunning aerial photograph of Kuala Lumpur's skyline with famous landmarks under a vibrant blue sky.",
+    "needs_review": false,
+    "place_confirmed": true
+  },
+  "03_item3.png": {
+    "pexels_id": 36733226,
+    "photographer": "Joerg Hartmann",
+    "source": "https://www.pexels.com/photo/petronas-towers-entrance-in-kuala-lumpur-36733226/",
+    "keywords": [
+      "Kuala Lumpur bank branch exterior",
+      "Malaysia city office building"
+    ],
+    "description": "Entrance of Petronas Towers showcasing modern architectural design in Kuala Lumpur, Malaysia.",
+    "needs_review": false,
+    "place_confirmed": true
+  },
+  "04_item4.png": {
+    "pexels_id": 38321155,
+    "photographer": "Anna Photosmaslom",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-cityscape-with-kl-tower-in-view-38321155/",
+    "keywords": [
+      "Kuala Lumpur bank branch exterior",
+      "Malaysia city office building"
+    ],
+    "description": "Kuala Lumpur skyline featuring KL Tower amidst skyscrapers and vibrant city architecture.",
+    "needs_review": false,
+    "place_confirmed": true
+  }
+}

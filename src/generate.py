@@ -106,7 +106,8 @@ Return ONLY a JSON object, no markdown fences, no commentary:
       "title": "Arabic, 2-4 words",
       "subtitle": "Arabic, short qualifier",
       "body": "one Arabic sentence. Wrap ONE phrase in <span class='hl'>...</span>",
-      "tip": "optional, start with 'نصيحة مختصر:'"
+      "tip": "optional, WITHOUT any prefix - the layout adds one",
+      "photo": "2-5 English words naming what to PHOTOGRAPH for this point. Be concrete and specific to THIS point, not the topic. Name Malaysia or Kuala Lumpur. Prefer objects, places and documents over city skylines."
     }
   ],
   "cta": {
@@ -198,14 +199,32 @@ def call_gemini(prompt: str, timeout: int | None = None) -> str:
 
 
 def parse_json(text: str) -> dict:
-    """Tolerate markdown fences even though the schema forbids them."""
+    """
+    Parse the model's reply, repairing the two things it gets wrong in practice:
+    markdown fences it was told not to use, and trailing commas.
+
+    Truncation is not repaired. A reply cut off mid-sentence would yield a
+    half-written slide, and silently salvaging it is worse than failing —
+    the caller retries instead.
+    """
     cleaned = re.sub(r"^```(?:json)?|```$", "", text.strip(),
                      flags=re.MULTILINE).strip()
     try:
         return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+
+    repaired = re.sub(r",(\s*[}\]])", r"\1", cleaned)
+    try:
+        return json.loads(repaired)
     except json.JSONDecodeError as exc:
+        truncated = not cleaned.rstrip().endswith("}")
+        why = ("the reply was cut off before it finished"
+               if truncated else f"{exc}")
         raise GenerationError(
-            f"Gemini did not return valid JSON: {exc}\n{cleaned[:300]}") from exc
+            f"Gemini did not return usable JSON — {why}.\n"
+            f"  Raise generation.max_output_tokens in settings.yaml if this "
+            f"keeps happening.\n{cleaned[-200:]}") from exc
 
 
 # ------------------------------------------------------------------ verify
@@ -267,6 +286,20 @@ def flag_all(obj):
 
 
 # ------------------------------------------------------------------- draft
+class _NoAliases(yaml.SafeDumper):
+    """
+    Never emit YAML anchors.
+
+    safe_dump reuses one object with an &anchor and *alias. Harmless alone,
+    but every draft numbers its anchors from id001, so appending a second one
+    to topics.yaml produces a duplicate-anchor error and the whole bank fails
+    to parse.
+    """
+
+    def ignore_aliases(self, data) -> bool:
+        return True
+
+
 def to_draft_yaml(idea: dict, gen: dict, flagged: int,
                   with_images: bool) -> str:
     icon = idea.get("icon", "check")
@@ -297,7 +330,7 @@ def to_draft_yaml(idea: dict, gen: dict, flagged: int,
         },
     }
     if with_images and kw:
-        topic["cover"]["keywords"] = kw
+        topic["cover"]["keywords"] = list(kw)
 
     for it in gen.get("items", []):
         entry = {
@@ -308,8 +341,15 @@ def to_draft_yaml(idea: dict, gen: dict, flagged: int,
         }
         if it.get("tip"):
             entry["tip"] = it["tip"]
-        if with_images and kw:
-            entry["keywords"] = kw
+        # Per-slide query. Reusing one topic-level keyword list for every
+        # slide returned four near-identical KL skylines for a carousel about
+        # opening a bank account.
+        if with_images:
+            photo = (it.get("photo") or "").strip()
+            if photo:
+                entry["keywords"] = [photo]
+            elif kw:
+                entry["keywords"] = list(kw)
         topic["items"].append(entry)
 
     header = f"""\
@@ -327,8 +367,8 @@ def to_draft_yaml(idea: dict, gen: dict, flagged: int,
 # but it has no way to know what is true about Malaysian universities today.
 
 """
-    body = yaml.safe_dump({"topics": [topic]}, allow_unicode=True,
-                          sort_keys=False, width=100)
+    body = yaml.dump({"topics": [topic]}, Dumper=_NoAliases,
+                     allow_unicode=True, sort_keys=False, width=100)
     return header + body
 
 
@@ -380,7 +420,13 @@ def generate(idea: dict, with_images: bool = False,
     survives two attempts is returned so the caller can warn about it — it is
     NOT silently accepted.
     """
-    gen = parse_json(call_gemini(build_prompt(idea, no_figures)))
+    # One retry on a malformed reply: truncation and stray commas are
+    # intermittent, and losing the whole run to one bad response is not worth it.
+    try:
+        gen = parse_json(call_gemini(build_prompt(idea, no_figures)))
+    except GenerationError as first:
+        print(f"    malformed reply, retrying once ({first})")
+        gen = parse_json(call_gemini(build_prompt(idea, no_figures)))
     figures = find_figures(gen)
 
     if no_figures and figures:

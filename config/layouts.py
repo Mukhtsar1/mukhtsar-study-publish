@@ -82,6 +82,21 @@ def _layered_icon(name: str, size: int, t: dict) -> str:
             f'{icon(name, size, t["pixel_fill"] if t["name"]=="Option B" else t["accent"])}</div></div>')
 
 
+def _strip_tip_prefix(tip: str) -> str:
+    """
+    Drop a leading "نصيحة مختصر:" from the tip text.
+
+    The layout already prints that label, and topics written by the generator
+    include it too because the schema asks for it — which rendered as
+    "نصيحة مختصر: نصيحة مختصر: ...".
+    """
+    cleaned = (tip or "").strip()
+    for prefix in ("نصيحة مختصر:", "نصيحة مختصر :", "نصيحة مختص:"):
+        if cleaned.startswith(prefix):
+            return cleaned[len(prefix):].strip()
+    return cleaned
+
+
 def _shell(t: dict, assets: str, fonts: str, body: str, tag: str,
            source: str = "") -> str:
     src_html = f'<div class="src">{source}</div>' if source else ""
@@ -128,11 +143,12 @@ def item(t, assets, fonts, *, index, total, icon_name, title, subtitle,
                 f' border:2px solid {t["frame_border"]}; border-radius:50px;'
                 f' padding:8px 26px; font-weight:700; font-size:26px;'
                 f' color:{t["footer"] if t["name"]=="Option A" else t["tag_text"]}">'
-                f'{index} / {total}</span>')
+                f'<span class="ltr">{index} / {total}</span></span>')
         tip_html = ("" if not tip else
                     f'<div style="margin-top:22px; font-weight:700; font-size:28px;'
                     f' color:{t["accent_2"]}; line-height:1.65">'
-                    f'{icon("bulb", 29, t["accent_2"])} نصيحة مختصر: {tip}</div>')
+                    f'{icon("bulb", 29, t["accent_2"])} '
+                    f'نصيحة مختصر: {_strip_tip_prefix(tip)}</div>')
         body = f"""<div class="photowin"></div>
 <div style="position:absolute; top:715px; left:0; width:100%; padding:0 70px; text-align:right">
   <div style="display:table; width:100%">
@@ -156,7 +172,7 @@ def item(t, assets, fonts, *, index, total, icon_name, title, subtitle,
     <div style="position:relative; background:{t['card_bg']};
          border:2px solid {t['accent_2']}; border-radius:18px; padding:24px 26px">
       <div style="font-weight:700; font-size:29px; color:{t['accent_2']}; line-height:1.6">
-        {icon('check', 30, t['accent_2'])} {tip}</div>
+        {icon('check', 30, t['accent_2'])} {_strip_tip_prefix(tip)}</div>
     </div>
   </div>""")
         body = f"""
