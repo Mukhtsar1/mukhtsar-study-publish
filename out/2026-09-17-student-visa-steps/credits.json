@@ -1,0 +1,74 @@
+{
+  "00_cover.png": {
+    "pexels_id": 18781256,
+    "photographer": "zheng liang",
+    "source": "https://www.pexels.com/photo/windows-and-seats-in-airport-18781256/",
+    "keywords": [
+      "Kuala Lumpur international airport terminal",
+      "Malaysia immigration arrival hall"
+    ],
+    "description": "Interior view of a modern airport terminal with seating and large windows letting in natural light.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "01_item1.png": {
+    "pexels_id": 1719490,
+    "photographer": "Harm Jakob Tolsma",
+    "source": "https://www.pexels.com/photo/arrivals-aankomst-terminal-1-signage-1719490/",
+    "keywords": [
+      "Kuala Lumpur international airport terminal",
+      "Malaysia immigration arrival hall"
+    ],
+    "description": "Bright arrivals sign with airplane symbol in an airport terminal.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "02_item2.png": {
+    "pexels_id": 2610763,
+    "photographer": "Zak Chapman",
+    "source": "https://www.pexels.com/photo/pathway-in-between-stalls-2610763/",
+    "keywords": [
+      "Kuala Lumpur international airport terminal",
+      "Malaysia immigration arrival hall"
+    ],
+    "description": "Dramatic long exposure of a modern airport terminal's moving walkalator with architectural ceiling design.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "03_item3.png": {
+    "pexels_id": 4530195,
+    "photographer": "ArtHouse Studio",
+    "source": "https://www.pexels.com/photo/airplane-connected-to-airport-terminal-with-airbridge-4530195/",
+    "keywords": [
+      "Kuala Lumpur international airport terminal",
+      "Malaysia immigration arrival hall"
+    ],
+    "description": "Through glass modern white plane connected to airport terminal with airbridge and ready for boarding against spectacular cloudy purple sky in late evening",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "04_item4.png": {
+    "pexels_id": 8281067,
+    "photographer": "Quang Nguyen Vinh",
+    "source": "https://www.pexels.com/photo/airplane-at-airport-runway-8281067/",
+    "keywords": [
+      "Kuala Lumpur international airport terminal",
+      "Malaysia immigration arrival hall"
+    ],
+    "description": "A vibrant scene of multiple airplanes on an airport runway during day time travel.",
+    "needs_review": true,
+    "place_confirmed": false
+  },
+  "05_item5.png": {
+    "pexels_id": 4530192,
+    "photographer": "ArtHouse Studio",
+    "source": "https://www.pexels.com/photo/aircraft-parking-near-airport-terminal-at-night-4530192/",
+    "keywords": [
+      "Kuala Lumpur international airport terminal",
+      "Malaysia immigration arrival hall"
+    ],
+    "description": "Modern plane parking on stand near assigned gate in modern airport terminal at night",
+    "needs_review": true,
+    "place_confirmed": false
+  }
+}
