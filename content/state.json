@@ -31,7 +31,14 @@
       "topic": "muslim-life",
       "at": "2026-09-17T18:29:08.161639",
       "note": "posted manually before the pipeline"
+    },
+    {
+      "topic": "international-students-contribute-annually-malaysia",
+      "run_id": "2026-09-17-international-students-contribute-annually-malaysia",
+      "path": "A",
+      "media_id": "18131237362669213",
+      "at": "2026-09-17T19:02:21.221195"
     }
   ],
-  "rotation_index": 1
+  "rotation_index": 2
 }

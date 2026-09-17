@@ -2,6 +2,8 @@
 Mukhtsar carousel pipeline — command line.
 
   python -m src.run go                         <- everything, one command
+  python -m src.run schedule                   <- show the publish queue
+  python -m src.run schedule --id <run> --checked
   python -m src.run discover [--count 3]       <- propose new topics
   python -m src.run approve  --id visa         <- move a reviewed draft in
   python -m src.run new                        <- guided: topic, design, images
@@ -703,6 +705,124 @@ def cmd_sources(args) -> None:
           "backlog.")
 
 
+# --------------------------------------------------------------- schedule
+def _mark_checked(run_id: str) -> None:
+    """Record that a person read this build, so the queue may publish it."""
+    meta_path = OUT / run_id / "meta.json"
+    if meta_path.exists():
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        meta["reviewed"] = True
+        meta["reviewed_at"] = dt.datetime.now().isoformat(timespec="minutes")
+        meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2),
+                             encoding="utf-8")
+
+
+def cmd_schedule(args) -> None:
+    from src import schedule as sch
+
+    if args.cancel:
+        sch.cancel(args.cancel)
+        print(f"Cancelled {args.cancel}.")
+        return
+
+    if args.id:
+        out_dir = OUT / args.id
+        if not out_dir.exists():
+            raise SystemExit(f"No build at out/{args.id}")
+
+        meta = {}
+        meta_path = out_dir / "meta.json"
+        if meta_path.exists():
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+        # The queue publishes unattended, so this is the moment a person
+        # confirms they have read the slides. Nothing downstream asks again.
+        if meta.get("reviewed") is False and not args.checked:
+            raise SystemExit(
+                f"\n'{args.id}' was written automatically and has not been "
+                f"read.\n  Open out/{args.id}/ and read every slide, then:\n"
+                f"    python -m src.run schedule --id {args.id} "
+                f"--at \"{args.at or '2026-09-20 21:00'}\" --checked")
+        if args.checked:
+            _mark_checked(args.id)
+
+        when = sch.parse_when(args.at) if args.at else sch.next_slot(sch.load())
+        entry = sch.add(args.id, when, meta.get("topic", ""))
+        ksa, myt = sch.fmt(entry["at"])
+        print(f"Scheduled {args.id}")
+        print(f"  {ksa} KSA   ({myt} Malaysia)")
+        print("\nRemember to push before it fires — Instagram fetches the "
+              "images\nfrom the public repo, not from this machine:")
+        print("  git add -A; git commit -m \"Add carousel\"; git push")
+        return
+
+    # default: show the queue
+    queue = sch.load()
+    if not queue:
+        print("\nNothing scheduled.\n")
+        print("Schedule a build with:")
+        print("  python -m src.run schedule --id <run-id> --checked")
+        print("  python -m src.run schedule --id <run-id> --at "
+              "\"2026-09-20 21:00\" --checked")
+        return
+
+    pending = [e for e in queue if e["status"] == "pending"]
+    donelist = [e for e in queue if e["status"] != "pending"]
+
+    if pending:
+        print("\nSCHEDULED")
+        print("-" * 74)
+        print(f"  {'WHEN (KSA)':<22} {'MY':<7} {'RUN ID':<40}")
+        print("-" * 74)
+        for e in pending:
+            ksa, myt = sch.fmt(e["at"])
+            print(f"  {ksa:<22} {myt:<7} {e['run_id']:<40}")
+    if donelist:
+        print("\nDONE")
+        print("-" * 74)
+        for e in donelist[-5:]:
+            ksa, _ = sch.fmt(e["at"])
+            state = e["status"]
+            print(f"  {ksa:<22} {state:<7} {e['run_id']:<40} "
+                  f"{e.get('media_id') or ''}")
+    print()
+    overdue = sch.due()
+    if overdue:
+        print(f"{len(overdue)} post(s) past their slot and not published. "
+              f"Run:  python -m src.run publish-due")
+
+
+def cmd_publish_due(args) -> None:
+    """Publish everything whose slot has passed. This is what cron runs."""
+    from src import schedule as sch
+    from src import publish
+
+    ready = sch.due()
+    if not ready:
+        print("Nothing due.")
+        return
+
+    for entry in ready:
+        run_id = entry["run_id"]
+        ksa, _ = sch.fmt(entry["at"])
+        print(f"\n{run_id}  (slot {ksa} KSA)")
+        try:
+            args.id, args.checked = run_id, True
+            cmd_publish(args)
+            meta_path = OUT / run_id / "meta.json"
+            media = None
+            if meta_path.exists():
+                media = json.loads(
+                    meta_path.read_text(encoding="utf-8")).get("media_id")
+            sch.mark(run_id, "published", media)
+        except SystemExit as exc:
+            print(f"  failed: {exc}")
+            sch.mark(run_id, "failed")
+        except publish.PublishError as exc:
+            print(f"  failed: {exc}")
+            sch.mark(run_id, "failed")
+
+
 # ------------------------------------------------------------------- main
 def main() -> None:
     ap = argparse.ArgumentParser(prog="mukhtsar-carousel")
@@ -737,6 +857,19 @@ def main() -> None:
     ap_.add_argument("--id", required=True)
     ap_.set_defaults(func=cmd_approve)
 
+    sc = sub.add_parser("schedule", help="queue a build, or show the queue")
+    sc.add_argument("--id", help="run id to schedule")
+    sc.add_argument("--at", help='when, KSA time: "2026-09-20 21:00"')
+    sc.add_argument("--checked", action="store_true",
+                    help="confirm you have read every slide")
+    sc.add_argument("--cancel", help="run id to remove from the queue")
+    sc.set_defaults(func=cmd_schedule)
+
+    pd = sub.add_parser("publish-due",
+                        help="publish everything past its slot (for cron)")
+    pd.add_argument("--dry-run", action="store_true")
+    pd.set_defaults(func=cmd_publish_due)
+
     so = sub.add_parser("sources", help="topic ideas from live feeds")
     so.add_argument("--check", action="store_true",
                     help="test every feed and report which answer")
@@ -765,6 +898,7 @@ def main() -> None:
     from src.render import FontsMissing                # noqa: E402
     from src.discover import DiscoveryError            # noqa: E402
     from src.generate import GenerationError           # noqa: E402
+    from src.schedule import ScheduleError             # noqa: E402
 
     try:
         args.func(args)
@@ -772,6 +906,8 @@ def main() -> None:
         raise SystemExit(f"\ndiscovery error: {exc}")
     except GenerationError as exc:
         raise SystemExit(f"\ngeneration error: {exc}")
+    except ScheduleError as exc:
+        raise SystemExit(f"\nschedule error: {exc}")
     except FontsMissing as exc:
         raise SystemExit(f"\nfont error: {exc}")
     except publish.PublishError as exc:
