@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 35749879,
+    "photographer": "Yi Ruan",
+    "source": "https://www.pexels.com/photo/modern-architecture-with-skyline-view-35749879/",
+    "keywords": [
+      "students walking on Kuala Lumpur university campus"
+    ],
+    "description": "Stunning cityscape featuring palm trees and modern skyscrapers under a clear blue sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An outdoor city view features concrete steps leading up to a plaza with palm trees and mod"
+  },
+  "01_item1.png": {
+    "pexels_id": 32529343,
+    "photographer": "Fernando Narvaez",
+    "source": "https://www.pexels.com/photo/empty-auditorium-with-blue-seats-and-yellow-walls-32529343/",
+    "keywords": [
+      "modern lecture hall in Kuala Lumpur"
+    ],
+    "description": "Wide-angle view of a vibrant auditorium with blue seats and yellow walls, perfect for events.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An empty auditorium with rows of blue seats and a projector mounted on the ceiling."
+  },
+  "02_item2.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "multinational student group studying in Kuala Lumpur library"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A low-angle shot showcases a cluster of modern skyscrapers under a clear blue sky."
+  },
+  "03_item3.png": {
+    "pexels_id": 37012315,
+    "photographer": "Nacho Gomez",
+    "source": "https://www.pexels.com/photo/stack-of-framed-diplomas-ready-for-ceremony-37012315/",
+    "keywords": [
+      "graduation certificates on desk in Kuala Lumpur"
+    ],
+    "description": "A stack of elegant framed diplomas prepared for an academic ceremony.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A stack of framed diplomas on a table."
+  },
+  "04_item4.png": {
+    "pexels_id": 30123502,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/calm-kuala-lumpur-cityscape-at-blue-hour-30123502/",
+    "keywords": [
+      "student accommodation room in Kuala Lumpur"
+    ],
+    "description": "Peaceful view of Kuala Lumpur's skyline during blue hour with city lights.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "An aerial nighttime view of a densely populated urban skyline with illuminated high-rise a"
+  }
+}
