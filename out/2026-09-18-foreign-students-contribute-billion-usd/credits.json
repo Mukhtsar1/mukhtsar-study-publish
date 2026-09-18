@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "students walking on Kuala Lumpur university campus"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A view of multiple modern skyscrapers and buildings under a clear blue sky."
+  },
+  "01_item1.png": {
+    "pexels_id": 38883416,
+    "photographer": "River Augustin",
+    "source": "https://www.pexels.com/photo/repetitive-pattern-of-empty-grey-auditorium-chairs-38883416/",
+    "keywords": [
+      "modern lecture hall in Kuala Lumpur"
+    ],
+    "description": "A captivating view of endless rows of grey chairs in an empty auditorium.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Rows of empty stadium seats stretching into the distance."
+  },
+  "02_item2.png": {
+    "pexels_id": 35749879,
+    "photographer": "Yi Ruan",
+    "source": "https://www.pexels.com/photo/modern-architecture-with-skyline-view-35749879/",
+    "keywords": [
+      "multinational student group studying in Kuala Lumpur library"
+    ],
+    "description": "Stunning cityscape featuring palm trees and modern skyscrapers under a clear blue sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An outdoor public plaza with steps, palm trees, modern buildings, and a communications tow"
+  },
+  "03_item3.png": {
+    "pexels_id": 7842676,
+    "photographer": "RDNE Stock project",
+    "source": "https://www.pexels.com/photo/close-up-shot-of-a-diploma-on-yellow-background-7842676/",
+    "keywords": [
+      "graduation certificates on desk in Kuala Lumpur"
+    ],
+    "description": "Close-up of a diploma with tassel and a rubber duck on a yellow background.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A graduation diploma holder with a tassel and a rubber duck wearing a graduation cap are o"
+  },
+  "04_item4.png": {
+    "pexels_id": 30123502,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/calm-kuala-lumpur-cityscape-at-blue-hour-30123502/",
+    "keywords": [
+      "student accommodation room in Kuala Lumpur"
+    ],
+    "description": "Peaceful view of Kuala Lumpur's skyline during blue hour with city lights.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "An aerial nighttime view of a brightly lit cityscape with numerous high-rise apartment bui"
+  }
+}
