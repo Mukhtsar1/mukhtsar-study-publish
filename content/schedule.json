@@ -1,7 +1,7 @@
 {
   "queue": [
     {
-      "run_id": "2026-09-18-student-visa-steps",
+      "run_id": "2026-09-18-student-visa-steps-v2",
       "topic": "student-visa-steps",
       "at": "2026-09-20T18:00+00:00",
       "status": "pending",
@@ -18,13 +18,6 @@
       "run_id": "2026-09-18-malaysia-student-visa-requirements-processing",
       "topic": "malaysia-student-visa-requirements-processing",
       "at": "2026-09-24T18:00+00:00",
-      "status": "pending",
-      "media_id": null
-    },
-    {
-      "run_id": "2026-09-18-student-visa-steps-v2",
-      "topic": "student-visa-steps",
-      "at": "2026-09-27T18:00+00:00",
       "status": "pending",
       "media_id": null
     }
