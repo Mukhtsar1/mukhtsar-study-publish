@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 15927957,
+    "photographer": "Dee Onederer",
+    "source": "https://www.pexels.com/photo/palace-in-kuala-lumpur-15927957/",
+    "keywords": [
+      "Kuala Lumpur university building exterior"
+    ],
+    "description": "A lush garden view of historical colonial architecture in Kuala Lumpur, Malaysia.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "An exterior view of a historic building with brick and white architecture surrounded by tr"
+  },
+  "01_item1.png": {
+    "pexels_id": 2982449,
+    "photographer": "MELIANI Driss",
+    "source": "https://www.pexels.com/photo/green-trees-between-white-concrete-buildings-2982449/",
+    "keywords": [
+      "Malaysian university campus walkway"
+    ],
+    "description": "Elegant university building with garden courtyard in Rabat, Morocco under clear blue sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An open courtyard with trees and a water feature is surrounded by white buildings."
+  },
+  "02_item2.png": {
+    "pexels_id": 10945691,
+    "photographer": "Azeem Azman",
+    "source": "https://www.pexels.com/photo/grayscale-photo-of-high-rise-buildings-10945691/",
+    "keywords": [
+      "Malaysian immigration office building"
+    ],
+    "description": "Black and white photo of skyscrapers in George Town, Penang, showcasing modern architecture.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A low-angle monochrome photograph of two tall high-rise residential towers against a cloud"
+  },
+  "03_item3.png": {
+    "pexels_id": 11781911,
+    "photographer": "Zakir Rushanly",
+    "source": "https://www.pexels.com/photo/wheelchair-near-glass-doors-inside-a-building-11781911/",
+    "keywords": [
+      "Modern medical clinic interior Kuala Lumpur"
+    ],
+    "description": "Hospital corridor with wheelchair, reflecting glass doors, and outdoor view. Ideal for healthcare themes.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An empty hospital hallway with a wheelchair and medical gurney."
+  },
+  "04_item4.png": {
+    "pexels_id": 30123502,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/calm-kuala-lumpur-cityscape-at-blue-hour-30123502/",
+    "keywords": [
+      "Kuala Lumpur skyline government buildings"
+    ],
+    "description": "Peaceful view of Kuala Lumpur's skyline during blue hour with city lights.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "An aerial view of a dense city skyline at dusk with illuminated high-rise buildings."
+  }
+}
