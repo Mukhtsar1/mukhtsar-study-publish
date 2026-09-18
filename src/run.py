@@ -111,7 +111,18 @@ def cmd_build(args) -> str:
                 f"\n  In the bank: {known}")
     else:
         topic = _next_topic()
-    path_key = args.path or topic.get("path") or _rotation_path()
+    # Ask for the look here so every route through the pipeline behaves the
+    # same. `go` used to prompt and `build` used to decide silently from the
+    # topic's pinned path, which meant the answer depended on which command
+    # you happened to type. --path skips the questions; so does a non-
+    # interactive run (cron, auto, publish-due).
+    if args.path:
+        path_key = args.path
+    elif getattr(args, "guide", True) and sys.stdin.isatty():
+        path_key = _pick_look(topic, topic["id"])
+        print()
+    else:
+        path_key = topic.get("path") or _rotation_path()
 
     run_id = _unique_run_id(topic["id"])
     out_dir = OUT / run_id
@@ -574,71 +585,73 @@ def cmd_approve(args) -> None:
 
 # --------------------------------------------------------------------- go
 def _pick_look(topic: dict, tid: str) -> str:
-    """Design + images prompts, shared by `new` and `go`."""
+    """
+    Design and photos, asked the same way on every path.
+
+    Both questions are always offered. A topic with no stored photo query used
+    to have the images question answered for it and silently downgraded to
+    text-only; now it asks what the photos should show instead, so the choice
+    is never taken away.
+    """
     print("\n  A = dark  (navy background, gold accents, red offset)")
     print("  B = light (cream background, navy text, teal accents)")
     pinned = topic.get("path", "")
     design = _ask("Design", ["A", "B"],
                   "B" if pinned.startswith("B") else "A").upper()
 
-    has_kw = _has_keywords(topic)
     print("\n  Y = photo window on each slide, filled from Pexels")
     print("  N = text only, no photos")
-    if not has_kw:
-        print(f"  ! '{tid}' has no keywords, so photo windows would be empty.")
-    default_img = "y" if (has_kw and pinned.endswith("-img")) else "n"
-    want = _ask("With images", ["y", "n"], default_img).lower() == "y"
-    if want and not has_kw:
-        print("  Falling back to text only — nothing to search Pexels with.")
-        want = False
-    return f"{design}-img" if want else design
+    default_img = "y" if pinned.endswith("-img") else "n"
+    if _ask("With images", ["y", "n"], default_img).lower() != "y":
+        return design
+
+    if not _has_keywords(topic):
+        print("\n  This topic has no photo search saved.")
+        print("  Describe what the photos should show, in English.")
+        print("  Be specific and name the place — 'Kuala Lumpur university")
+        print("  campus' works, 'students' returns the whole world.")
+        try:
+            query = input("  Photos of: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            query = ""
+        if not query:
+            print("  No search given — building text only.")
+            return design
+        _save_keywords(tid, query)
+        topic.setdefault("cover", {})["keywords"] = [query]
+        for item in topic.get("items", []) or []:
+            item["keywords"] = [query]
+
+    return f"{design}-img"
 
 
+def _save_keywords(tid: str, query: str) -> None:
+    """Store the query on the topic so the next build does not ask again."""
+    import yaml
 
-def _wait_for_draft(dsc, tid: str, path) -> None:
-    """
-    Watch the draft and continue the moment it validates.
-
-    Automating the keystroke, not the judgement: the pipeline can tell that a
-    placeholder is gone and the YAML parses, and that is all it checks here.
-    Whether a fee, a date or a process claim is TRUE is not something any of
-    this can verify — that part stays with you, which is why the draft has to
-    be edited by a person before this loop lets it through.
-    """
-    import time
-
-    print(f"\n  Opening {path.name}…")
+    path = ROOT / "content" / "topics.yaml"
     try:
-        os.startfile(str(path))                       # noqa: S606 (Windows)
-    except AttributeError:
-        print(f"  Open it yourself: {path}")
-    except OSError:
-        print(f"  Could not open an editor. Open it yourself: {path}")
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        for t in data.get("topics", []):
+            if t["id"] == tid:
+                t.setdefault("cover", {})["keywords"] = [query]
+                for item in t.get("items", []) or []:
+                    item["keywords"] = [query]
+                break
+        else:
+            return
+        path.write_text(
+            yaml.dump(data, Dumper=_NoAliasDumper, allow_unicode=True,
+                      sort_keys=False, width=100), encoding="utf-8")
+    except Exception as exc:                           # noqa: BLE001
+        print(f"  (could not save the search for next time: {exc})")
 
-    print("  Fill in every TODO and check every VERIFY[...] against a real")
-    print("  source. Save the file — this continues on its own.")
-    print("  Ctrl+C to stop.\n")
 
-    last_note, last_mtime = None, None
-    try:
-        while True:
-            try:
-                mtime = path.stat().st_mtime
-            except OSError:
-                print("  Draft file disappeared.")
-                raise SystemExit("Stopped.")
+class _NoAliasDumper(__import__("yaml").SafeDumper):
+    """No anchors — two topics sharing a keyword list would collide on merge."""
 
-            ready, _, note = dsc.draft_status(tid)
-            if ready:
-                dsc.approve(tid)
-                print(f"  Draft is clean — '{tid}' added to the bank.")
-                return
-            if note != last_note or mtime != last_mtime:
-                print(f"  waiting… {note}")
-                last_note, last_mtime = note, mtime
-            time.sleep(2)
-    except KeyboardInterrupt:
-        raise SystemExit("\nStopped — the draft is still in drafts/.")
+    def ignore_aliases(self, data) -> bool:
+        return True
 
 
 def cmd_go(args) -> None:

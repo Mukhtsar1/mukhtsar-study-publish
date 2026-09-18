@@ -11,6 +11,8 @@ The only difference between 'A'/'B' and their '-img' variants is whether a
 transparent photo window is drawn at the top and the text block moves down.
 """
 from config.themes import CANVAS
+import re
+
 from config.icons import icon
 
 WIN = CANVAS["window"]          # (x0, y0, x1, y1)
@@ -212,20 +214,34 @@ def checklist(t, assets, fonts, *, eyebrow, title, lines, tag, source=""):
 # ---------------------------------------------------------------- cta
 def cta(t, assets, fonts, *, eyebrow, icon_name, headline, highlight,
         body_text, button, save_line, tag):
+    # The CTA is the densest slide: eyebrow, icon, two headline lines, body,
+    # a button block and a save line, all above the footer band. Fixed sizes
+    # work for copy of roughly the length the templates use; longer copy
+    # pushes the save line into the footer and QA rejects the build. Scale the
+    # three variable-length blocks instead of failing.
+    plain = re.sub(r"<[^>]+>", "", f"{headline}{highlight}{body_text}{button}")
+    length = len(plain)
+    if length > 150:
+        head_size, body_size, btn_size, icon_size, gap = 50, 28, 38, 84, 18
+    elif length > 110:
+        head_size, body_size, btn_size, icon_size, gap = 56, 30, 42, 94, 22
+    else:
+        head_size, body_size, btn_size, icon_size, gap = 62, 33, 46, 104, 26
+
     body = f"""
 <div style="position:absolute; top:250px; left:0; width:100%; text-align:center; padding:0 90px">
   <div class="eyebrow">{eyebrow}</div>
-  <div style="margin-top:34px">{_layered_icon(icon_name, 104, t)}</div>
-  <div style="font-weight:900; font-size:62px; line-height:1.38; margin-top:26px">
+  <div style="margin-top:34px">{_layered_icon(icon_name, icon_size, t)}</div>
+  <div style="font-weight:900; font-size:{head_size}px; line-height:1.38; margin-top:{gap}px">
     {headline}<br><span style="color:{t['accent']}">{highlight}</span></div>
   {_dots(4)}
-  <div style="font-weight:700; font-size:33px; color:{t['text_body']}; line-height:1.9;
-       margin-bottom:40px">{body_text}</div>
+  <div style="font-weight:700; font-size:{body_size}px; color:{t['text_body']};
+       line-height:1.85; margin-bottom:{gap + 10}px">{body_text}</div>
   <div style="position:relative; margin:0 70px">
     <div style="position:absolute; top:12px; right:-12px; width:100%; height:100%;
          background:{t['cta_shadow']}; border-radius:22px"></div>
     <div style="position:relative; background:{t['cta_bg']}; border-radius:22px; padding:34px 30px">
-      <div style="font-weight:900; font-size:46px; color:{t['cta_text']}">
+      <div style="font-weight:900; font-size:{btn_size}px; color:{t['cta_text']}">
         {icon('whatsapp', 44, t['cta_text'])} {button}</div>
       <div style="font-weight:800; font-size:32px; color:{t['cta_sub']}; margin-top:8px">
         عبر الرابط في البايو</div>

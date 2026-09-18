@@ -99,7 +99,8 @@ Return ONLY a JSON object, no markdown fences, no commentary:
   "cover": {
     "headline": "Arabic, 2-3 words",
     "highlight": "Arabic, 2-3 words, the emphasised second line",
-    "subline": "one or two Arabic lines, use <br> between them"
+    "subline": "one or two Arabic lines, use <br> between them",
+    "photo": "2-5 English words naming what to photograph for the cover. Name Malaysia or Kuala Lumpur."
   },
   "items": [
     {
@@ -111,10 +112,10 @@ Return ONLY a JSON object, no markdown fences, no commentary:
     }
   ],
   "cta": {
-    "headline": "Arabic, ends with a dash",
-    "highlight": "Arabic, 2-3 words",
-    "body": "two Arabic lines separated by <br>",
-    "button": "Arabic call to action, 3-5 words"
+    "headline": "Arabic, ends with a dash, MAX 22 characters",
+    "highlight": "Arabic, 2-3 words, MAX 18 characters",
+    "body": "two Arabic lines separated by <br>, MAX 60 characters total",
+    "button": "Arabic call to action, 3-5 words, MAX 28 characters"
   }
 }
 """
@@ -329,7 +330,10 @@ def to_draft_yaml(idea: dict, gen: dict, flagged: int,
             "save": "احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا",
         },
     }
-    if with_images and kw:
+    cover_photo = (gen.get("cover", {}) or {}).get("photo", "").strip()
+    if cover_photo:
+        topic["cover"]["keywords"] = [cover_photo]
+    elif kw:
         topic["cover"]["keywords"] = list(kw)
 
     for it in gen.get("items", []):
@@ -344,7 +348,10 @@ def to_draft_yaml(idea: dict, gen: dict, flagged: int,
         # Per-slide query. Reusing one topic-level keyword list for every
         # slide returned four near-identical KL skylines for a carousel about
         # opening a bank account.
-        if with_images:
+        # Always record the query, whatever was asked for at generation time.
+        # A topic whose idea carried no keywords could otherwise never take
+        # photos, even though the model supplied a query for every slide.
+        if True:
             photo = (it.get("photo") or "").strip()
             if photo:
                 entry["keywords"] = [photo]
