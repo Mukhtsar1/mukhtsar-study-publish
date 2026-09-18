@@ -1,28 +1,32 @@
-name: Publish carousel
+name: Publish scheduled carousels
 
-# 18:00 UTC = 21:00 KSA (peak) = 02:00 Malaysia next day
-# Sunday / Tuesday / Thursday
+# Runs hourly and publishes anything whose slot has passed.
+#
+# Hourly rather than at the exact posting times: a cron that fires only at
+# 18:00 UTC on three days publishes nothing if that one run fails or if you
+# schedule a post for another day. GitHub also delays scheduled runs under
+# load, so "on the hour" is approximate whatever we write here. Publishing by
+# QUEUE rather than by CRON TIME means a missed hour is picked up by the next.
 on:
   schedule:
-    - cron: "0 18 * * 0,2,4"
+    - cron: "0 * * * *"
   workflow_dispatch:
     inputs:
-      topic:
-        description: "Topic id (blank = next in queue)"
-        required: false
-      path:
-        description: "A | A-img | B | B-img (blank = topic default)"
-        required: false
       dry_run:
-        description: "Build and QA only, do not publish"
+        description: "Check the queue without publishing"
         type: boolean
         default: false
+
+# Two runs publishing the same post at once would create a duplicate.
+concurrency:
+  group: mukhtsar-publish
+  cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write          # to commit rendered PNGs so Instagram can fetch them
+      contents: write          # to commit the updated queue back
 
     steps:
       - uses: actions/checkout@v4
@@ -38,54 +42,31 @@ jobs:
             libharfbuzz0b libfribidi0 libcairo2
 
       - name: Install Python deps
-        run: pip install -r requirements.txt
+        run: pip install -q -r requirements.txt
 
-      - name: Set up assets
-        run: python -m tools.setup_assets
-
-      - name: Build carousel
+      - name: Publish anything past its slot
         env:
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IMAGE_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/main/out
         run: |
-          if [ -n "${{ github.event.inputs.topic }}" ]; then
-            python -m src.run build --topic "${{ github.event.inputs.topic }}" \
-              ${{ github.event.inputs.path && format('--path {0}', github.event.inputs.path) || '' }}
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m src.run schedule
           else
-            python -m src.run build --next
+            python -m src.run publish-due
           fi
 
-      - name: Commit rendered slides
+      # The queue records what was published and when. Committing it back is
+      # what stops the next hourly run from publishing the same post again.
+      - name: Save the queue
+        if: ${{ inputs.dry_run != 'true' }}
         run: |
-          git config user.name  "mukhtsar-bot"
-          git config user.email "bot@mukhtsar.com"
-          git add out/ content/state.json
-          git commit -m "build: carousel $(date -u +%F)" || echo "nothing to commit"
-          git push
-
-      - name: Wait for raw.githubusercontent to serve the new files
-        run: sleep 45
-
-      - name: Publish to Instagram
-        if: ${{ github.event.inputs.dry_run != 'true' }}
-        env:
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL }}
-        run: |
-          RUN_ID=$(ls -t out | head -1)
-          echo "Publishing $RUN_ID"
-          python -m src.run publish --id "$RUN_ID"
-
-      - name: Record publish state
-        if: ${{ github.event.inputs.dry_run != 'true' }}
-        run: |
-          git add content/state.json
-          git commit -m "state: published $(date -u +%F)" || echo "nothing to commit"
-          git push
-
-      - name: Upload slides as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: carousel-${{ github.run_number }}
-          path: out/*/
-          retention-days: 14
+          if git diff --quiet content/schedule.json content/state.json; then
+            echo "Nothing published this run."
+          else
+            git config user.name "mukhtsar-pipeline"
+            git config user.email "actions@github.com"
+            git add content/schedule.json content/state.json
+            git commit -m "Published scheduled carousel [skip ci]"
+            git push
+          fi
