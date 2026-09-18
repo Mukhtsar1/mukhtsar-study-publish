@@ -34,6 +34,27 @@ images:
   # "modern railway station interior" could be anywhere and passes untouched.
   reject_foreign_places: true
 
+  # Look at the photo itself, not just its description. Pexels supplies only
+  # alt text and a URL slug, so every filter above is guessing — a bus stop
+  # "with diverse passengers" and a plaza full of seated people both reached
+  # finished carousels. This sends each downloaded candidate to a vision model
+  # and rejects it on what is actually visible, trying the next candidate.
+  # Costs one Gemini call per photo and needs GEMINI_API_KEY.
+  # Used only when a slide's own subject keeps returning photos of people.
+  fallback_queries:
+    - "Kuala Lumpur city skyline"
+    - "Malaysia modern building exterior"
+    - "documents and pen on desk"
+
+  vision:
+    enabled: true
+    model: "gemini-3.5-flash-lite"
+    reject_uncovered_hair: true       # a woman with her hair visible
+    reject_immodest: true             # swimwear, shorts, sleeveless
+    reject_alcohol: true
+    reject_identifiable_faces: true   # recognisable faces, no consent
+    reject_any_people: false          # set true to allow no people at all
+
 # Topic discovery
 discovery:
   # How similar a proposed topic may be to one already in the bank before it

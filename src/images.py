@@ -80,6 +80,7 @@ FOREIGN_PLACES = {
     "amsterdam", "belgium", "vienna", "austria", "prague", "budapest",
     "poland", "sweden", "norway", "denmark", "finland", "russia", "moscow",
     "new york", "chicago", "california", "texas", "usa", "united states",
+    "us passport", "u.s.", "american passport", "british passport",
     "america", "american", "canada", "toronto", "vancouver", "mexico",
     "brazil", "argentina", "australia", "sydney", "melbourne",
     "new zealand", "india", "delhi", "mumbai", "pakistan", "bangladesh",
@@ -201,6 +202,63 @@ def reject_foreign() -> bool:
     return bool(_image_cfg().get("reject_foreign_places", True))
 
 
+# Words that make a search return photos of people, which the people policy
+# then rejects wholesale — "students walking on Kuala Lumpur university campus"
+# returned 15 results and every one was rejected.
+_PEOPLE_QUERY_WORDS = {
+    "student", "students", "people", "person", "man", "men", "woman", "women",
+    "family", "families", "crowd", "group", "staff", "team", "worker",
+    "workers", "customer", "customers", "passenger", "passengers", "friends",
+    "walking", "sitting", "standing", "studying", "working", "talking",
+    "meeting", "smiling", "portrait", "lifestyle",
+}
+
+
+def fallback_queries() -> list[str]:
+    """
+    Last-resort searches when a slide's own subject keeps returning people.
+    Deliberately dull and reliably empty of human figures.
+    """
+    cfg = _image_cfg().get("fallback_queries")
+    return cfg or [
+        "Kuala Lumpur city skyline",
+        "Malaysia modern building exterior",
+        "documents and pen on desk",
+    ]
+
+
+def depopulate(query: str) -> str:
+    """Strip the words that pull a search toward photos of people."""
+    kept = [w for w in query.split()
+            if w.lower().strip(",.") not in _PEOPLE_QUERY_WORDS]
+    return " ".join(kept).strip()
+
+
+def candidates(keywords: list[str], exclude_ids: set[int] | None = None,
+               limit: int = 15) -> list[dict]:
+    """Ranked candidates rather than just the winner, so a photo rejected by
+    the vision check can be replaced without searching again."""
+    exclude_ids = exclude_ids or set()
+    policy = people_policy()
+    no_foreign = reject_foreign()
+    raw = search(keywords, per_page=40)
+    pool = [p for p in raw
+            if p["id"] not in exclude_ids
+            and not _banned(p)
+            and not _people_hit(p, policy)
+            and not (no_foreign and _foreign_hit(p))]
+    scored = sorted(((score(p), p) for p in pool), key=lambda x: x[0],
+                    reverse=True)
+    ranked = [p for sc, p in scored if sc > 0]
+    if not ranked:
+        raise PexelsError(
+            f"No usable Pexels result for {keywords!r} — "
+            f"{len(raw)} found, {len(raw) - len(pool)} rejected by the content "
+            f"filters, none of the rest met the size/aspect bar. "
+            f"Try more specific keywords (a place, not a person).")
+    return ranked[:limit]
+
+
 def pick(keywords: list[str], exclude_ids: set[int] | None = None) -> dict:
     """Choose the best candidate for one slide."""
     exclude_ids = exclude_ids or set()
@@ -284,12 +342,67 @@ def fill_windows(slide_pngs: list[Path], keyword_map: dict[int, list[str]],
     credits: dict[str, dict] = {}
     used: set[int] = set()
 
+    # Check the configuration once, rather than letting every photo fail the
+    # vision check for the same reason.
+    import os
+
+    from src import vision
+    if vision.enabled() and not os.environ.get("GEMINI_API_KEY", "").strip():
+        raise PexelsError(
+            "The image check needs GEMINI_API_KEY, which is not set.\n"
+            "  Add it to .env, or turn the check off in config/settings.yaml "
+            "(images.vision.enabled: false).\n"
+            "  With it off, nothing looks at the photos — only their "
+            "descriptions.")
+
     for idx, keywords in keyword_map.items():
         png = Path(slide_pngs[idx])
         key_out_window(png)
-        photo = pick(keywords, exclude_ids=used)
+        # Try candidates in rank order until one passes the vision check.
+        # Text filters cannot see the photo; this is the only step that does.
+        from src import vision
+
+        # If the query itself asks for people, every result is rejected by
+        # the people policy. Retry once with those words removed rather than
+        # failing the whole build.
+        # Try progressively wider searches. A single slide exhausting its
+        # candidates used to fail the whole build after every other slide had
+        # already been sourced, which is a poor trade for one photo.
+        attempts = [list(keywords)]
+        cleaned = [depopulate(k) for k in keywords]
+        cleaned = [c for c in cleaned if len(c.split()) >= 2]
+        if cleaned and cleaned != list(keywords):
+            attempts.append(cleaned)
+        attempts.extend([q] for q in fallback_queries())
+
+        photo, verdict = None, ""
+        for n, query in enumerate(attempts):
+            if n:
+                print(f"    widening search: {query[0]!r}")
+            try:
+                pool = candidates(query, exclude_ids=used)
+            except PexelsError:
+                continue
+            for cand in pool:
+                raw = download(cand, work_dir / f"raw_{idx:02d}.jpg")
+                ok, why = vision.check(raw)
+                if ok:
+                    photo, verdict = cand, why
+                    break
+                print(f"    rejected {cand['id']}: {why}")
+            if photo:
+                break
+
+        if photo is None:
+            raise PexelsError(
+                f"No photo passed the image check for {keywords!r}, even after "
+                f"widening the search.\n"
+                f"  Either the subject always returns people, or the vision "
+                f"check is unavailable.\n"
+                f"  Build it text-only, or set a different photo query on this "
+                f"slide in content/topics.yaml.")
+
         used.add(photo["id"])
-        raw = download(photo, work_dir / f"raw_{idx:02d}.jpg")
         fitted = fit_to_window(Image.open(raw))
         composite(png, fitted, png, bg_hex)
         alt = (photo.get("alt") or "").strip()
@@ -305,6 +418,7 @@ def fill_windows(slide_pngs: list[Path], keyword_map: dict[int, list[str]],
             # so this photo passed unchecked and needs a human look.
             "needs_review": not (described and placed),
             "place_confirmed": placed,
+            "vision": verdict,
         }
         if not described:
             flag = "   <- NO DESCRIPTION, CHECK THIS ONE"

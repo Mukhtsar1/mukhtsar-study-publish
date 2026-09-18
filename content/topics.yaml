@@ -394,3 +394,176 @@ topics:
         مجانية
       button: تواصل معنا اليوم
       save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا
+
+  - id: student-visa-steps
+    path: A
+    tag: تأشيرة ماليزيا
+    hook: رحلة تعليمية موفقة تبدأ بخطوات واضحة لتأشيرة الطالب في ماليزيا.
+    hashtags:
+    - دراسة_في_ماليزيا
+    - تأشيرة_طالب
+    - استشارات_تعليمية
+    - كوالالمبور
+    - الخلیج
+    cover:
+      eyebrow: STUDENT VISA · STEP BY STEP
+      icon: document
+      headline: خطوات تأشيرة الطالب
+      highlight: في ماليزيا
+      subline: دليلك الشامل لترتيب أوراقك الدراسية<br>بكل سهولة ويسر في كوالالمبور
+      keywords:
+      - student visa approval document in Kuala Lumpur
+    items:
+    - icon: document
+      title: القبول الجامعي
+      subtitle: الخطوة الأولى
+      body: يجب الحصول على قبول رسمي من إحدى جامعات ماليزيا <span class='hl'>قبل بدء الإجراءات</span>.
+      tip: نساعدك في اختيار التخصص والجامعة المناسبة
+      keywords:
+      - university acceptance letter on desk in Kuala Lumpur
+    - icon: document
+      title: تقديم الطلب
+      subtitle: الخطوة الثانية
+      body: يتم رفع المستندات المطلوبة عبر <span class='hl'>الموقع الرسمي</span> للجهة المختصة.
+      tip: تأكد من اكتمال كافة الأوراق المطلوبة
+      keywords:
+      - laptop showing visa application portal in Kuala Lumpur
+    - icon: document
+      title: خطاب الموافقة
+      subtitle: الخطوة الثالثة
+      body: انتظار صدور خطاب الموافقة الرسمي <span class='hl'>الخاص بالسفر</span> للدراسة.
+      tip: نتابع حالة الطلب بشكل دائم
+      keywords:
+      - official government approval letter in Malaysia
+    - icon: document
+      title: إشدار التأشيرة
+      subtitle: الخطوة الرابعة
+      body: استخراج تأشيرة الدخول المبدئية <span class='hl'>عبر الإنترنت</span> لتتمكن من السفر.
+      tip: نوجهك لخطوات استلام التأشيرة بسهولة
+      keywords:
+      - printed single entry visa document Malaysia
+    - icon: document
+      title: الفحص الطبي
+      subtitle: الخطوة الخامسة
+      body: إجراء الفحص الطبي اللازم فور <span class='hl'>الوصول إلى كوالالمبور</span>.
+      tip: خدماتنا الاستشارية مجانية
+      keywords:
+      - medical checkup clinic reception in Kuala Lumpur
+    cta:
+      eyebrow: TALK TO US
+      icon: document
+      headline: نحن هنا لمساعدتك -
+      highlight: استشرنا الآن
+      body: ابدأ رحلتك التعليمية معنا بكل اعتمادية<br>خدماتنا الاستشارية مجانية تماماً
+      button: تواصل معنا للحصول على الاستشارة
+      save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا
+
+  - id: foreign-students-contribute-billion-usd
+    path: A
+    tag: وجهة تعليمية عالمية
+    hook: تعرف على مكانة ماليزيا المتقدمة في التعليم الدولي
+    hashtags:
+    - دراسة_في_ماليزيا
+    - تعليم_دولي
+    - كوالالمبور
+    - مختصر_للاستشارات
+    cover:
+      eyebrow: WHAT CHANGED
+      icon: university
+      headline: بيئة تعليمية
+      highlight: مزدهرة ونابضة بالحياة
+      subline: استثمر في مستقبل أبنائك <br> داخل جامعات ماليزيا المرموقة
+      keywords:
+      - students walking on Kuala Lumpur university campus
+    items:
+    - icon: university
+      title: اقتصاد معرفي قوي
+      subtitle: دعم شامل للتعليم
+      body: تستقطب الجامعات الماليزية <span class='hl'>آلاف الطلاب الدوليين</span> سنوياً من شتى أنحاء العالم.
+      tip: اختر التخصص المناسب لطموحات ابنك
+      keywords:
+      - modern lecture hall in Kuala Lumpur
+    - icon: university
+      title: تنوع ثقافي واسع
+      subtitle: بيئة آمنة للجميع
+      body: تتميز كوالالمبور باحتضانها <span class='hl'>مجتمعات طلابية متنوعة</span> تناسب العائلات الخليجية.
+      tip: الاستقرار يعزز التحصيل الدراسي
+      keywords:
+      - multinational student group studying in Kuala Lumpur library
+    - icon: university
+      title: شهادات معتمدة عالمياً
+      subtitle: جودة أكاديمية عالية
+      body: توفر الجامعات الماليزية <span class='hl'>برامج دراسية متقدمة</span> بالشراكة مع جامعات غربية.
+      tip: مستقبل مهني واعد بانتظار الخريجين
+      keywords:
+      - graduation certificates on desk in Kuala Lumpur
+    - icon: university
+      title: تكاليف معيشية مناسبة
+      subtitle: قيمة مضافة عالية
+      body: تضمن ماليزيا تقديم <span class='hl'>تعليم متميز بتكلفة ملائمة</span> مقارنة بوجهات أخرى.
+      tip: خدماتنا الاستشارية مجانية
+      keywords:
+      - student accommodation room in Kuala Lumpur
+    cta:
+      eyebrow: TALK TO US
+      icon: university
+      headline: خطط لمستقبل ابنك -
+      highlight: استشرنا اليوم
+      body: نساعدك في اختيار التخصص المناسب<br>خدماتنا الاستشارية مجانية
+      button: احصل على استشارتك المجانية
+      save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا
+
+  - id: malaysia-student-visa-requirements-processing
+    path: A
+    tag: تأشيرة ماليزيا
+    hook: دليلك الشامل لمتطلبات التأشيرة الدراسية وتجهيز مستنداتك بكل سهولة
+    hashtags:
+    - الدراسة_في_ماليزيا
+    - تأشيرة_طلاب
+    - القبول_الجامعي
+    - مختصر_للاستشارات
+    cover:
+      eyebrow: WHAT CHANGED
+      icon: university
+      headline: تأشيرة الدراسة
+      highlight: في ماليزيا
+      subline: تعرف على المتطلبات الأساسية<br>وخطوات إصدار التأشيرة
+      keywords:
+      - Kuala Lumpur university building exterior
+    items:
+    - icon: university
+      title: القبول الجامعي
+      subtitle: الخطوة الأولى
+      body: يجب الحصول على <span class='hl'>قبول رسمي</span> من الجامعة المعتمدة قبل التقديم.
+      tip: نفضل التقديم مبكراً لتجنب التأخير
+      keywords:
+      - Malaysian university campus walkway
+    - icon: university
+      title: المستندات المطلوبة
+      subtitle: الأوراق الرسمية
+      body: تتطلب الإجراءات تقديم <span class='hl'>جواز السفر</span> والشهادات الأكاديمية مصدقة.
+      tip: تأكد من صلاحية جواز السفر
+      keywords:
+      - Malaysian immigration office building
+    - icon: university
+      title: الفحص الطبي
+      subtitle: الإجراء الصحي
+      body: يشترط إجراء <span class='hl'>فحص طبي شامل</span> في المراكز المعتمدة لدى الجهات المختصة.
+      tip: يتم إجراء الفحص لدى الوصول أو في بلد المنشأ
+      keywords:
+      - Modern medical clinic interior Kuala Lumpur
+    - icon: university
+      title: موافقات التأشيرة
+      subtitle: الاعتماد النهائي
+      body: تتم مراجعة الطلب واستخراج <span class='hl'>خطاب الموافقة</span> عبر منصة الهجرة الرسمية.
+      tip: خدماتنا الاستشارية مجانية لمساعدتك في كل خطوة
+      keywords:
+      - Kuala Lumpur skyline government buildings
+    cta:
+      eyebrow: TALK TO US
+      icon: university
+      headline: جاهز للدراسة -
+      highlight: ابدأ الآن
+      body: تواصل معنا لتخطيط رحلتك التعليمية<br>خدماتنا الاستشارية مجانية
+      button: احصل على استشارتك المجانية
+      save: احفظ المنشور — وأرسله لمن يخطط للدراسة في ماليزيا

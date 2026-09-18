@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from config.themes import CANVAS, PATHS, theme          # noqa: E402
-from src import images, qa                              # noqa: E402
+from src import images, vision, qa                              # noqa: E402
 from src.build import (build_caption, build_slides,      # noqa: E402
                        get_topic, load_topics)
 from src.render import render_slides                    # noqa: E402
@@ -50,6 +50,18 @@ def _stub_pick(counter):
         counter["n"] += 1
         return _fake_photo(counter["n"])
     return inner
+
+
+def _stub_candidates(counter):
+    """Ranked candidates, stubbed. fill_windows now walks a list."""
+    def inner(keywords, exclude_ids=None, limit=6):
+        return [_stub_pick(counter)(keywords, exclude_ids)]
+    return inner
+
+
+def _stub_vision(path):
+    """The vision check needs a live model; tests assert the plumbing only."""
+    return True, "stubbed"
 
 
 def _stub_download(photo, dest):
@@ -112,6 +124,10 @@ def test_qa_passes_clean() -> None:
                 if it.get("keywords"):
                     kw[i] = it["keywords"]
             with patch.object(images, "pick", _stub_pick(counter)), \
+                 patch.object(images, "candidates", _stub_candidates(counter)), \
+                 patch.object(vision, "check", _stub_vision), \
+         patch.object(vision, "enabled", lambda: False), \
+                 patch.object(vision, "enabled", lambda: False), \
                  patch.object(images, "download", _stub_download):
                 images.fill_windows(pngs, kw, theme(pk)["bg"], out / "_work")
             shutil.rmtree(out / "_work", ignore_errors=True)
@@ -197,6 +213,9 @@ def test_image_pipeline() -> None:
     for i, it in enumerate(topic["items"], 1):
         kw[i] = it["keywords"]
     with patch.object(images, "pick", _stub_pick(counter)), \
+         patch.object(images, "candidates", _stub_candidates(counter)), \
+         patch.object(vision, "check", _stub_vision), \
+         patch.object(vision, "enabled", lambda: False), \
          patch.object(images, "download", _stub_download):
         credits = images.fill_windows(pngs, kw, theme("A-img")["bg"],
                                       out / "_work")

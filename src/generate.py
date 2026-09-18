@@ -100,7 +100,7 @@ Return ONLY a JSON object, no markdown fences, no commentary:
     "headline": "Arabic, 2-3 words",
     "highlight": "Arabic, 2-3 words, the emphasised second line",
     "subline": "one or two Arabic lines, use <br> between them",
-    "photo": "2-5 English words naming what to photograph for the cover. Name Malaysia or Kuala Lumpur."
+    "photo": "2-5 English words naming what to photograph for the cover. NEVER ask for people. Name a place or building in Malaysia or Kuala Lumpur."
   },
   "items": [
     {
@@ -108,7 +108,7 @@ Return ONLY a JSON object, no markdown fences, no commentary:
       "subtitle": "Arabic, short qualifier",
       "body": "one Arabic sentence. Wrap ONE phrase in <span class='hl'>...</span>",
       "tip": "optional, WITHOUT any prefix - the layout adds one",
-      "photo": "2-5 English words naming what to PHOTOGRAPH for this point. Be concrete and specific to THIS point, not the topic. Name Malaysia or Kuala Lumpur. Prefer objects, places and documents over city skylines."
+      "photo": "2-5 English words naming what a reader should SEE for THIS point. Pick the concrete thing the point is about, not the country. A point about documents -> 'passport and documents on desk'. About a medical check -> 'medical clinic examination room'. About fees -> 'bank notes and calculator'. About a campus -> 'university building exterior Malaysia'. NEVER ask for people - no 'students', 'staff', 'family', 'crowd'; photos of people are rejected, so such a query returns nothing usable. Only add 'Malaysia' or 'Kuala Lumpur' when the PLACE itself is the subject; adding it to an object shot just returns skylines."
     }
   ],
   "cta": {

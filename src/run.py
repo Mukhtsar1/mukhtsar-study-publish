@@ -19,6 +19,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -130,6 +131,19 @@ def cmd_build(args) -> str:
         shutil.rmtree(out_dir)
 
     print(f"Building '{topic['id']}' on path {path_key} -> {run_id}")
+    try:
+        return _build_into(args, topic, path_key, run_id, out_dir)
+    except BaseException:
+        # A half-built folder is worse than none: it looks like a finished
+        # carousel in out/, it can be scheduled, and it publishes magenta
+        # windows or a missing slide. Remove it and let the error surface.
+        shutil.rmtree(out_dir, ignore_errors=True)
+        print(f"  Build failed — removed out/{run_id}")
+        raise
+
+
+def _build_into(args, topic: dict, path_key: str, run_id: str,
+                out_dir: Path) -> str:
     slides = build_slides(topic, path_key)
     pngs = render_slides(slides, out_dir, base_url=str(ROOT))
     caption = build_caption(topic)
@@ -164,6 +178,7 @@ def cmd_build(args) -> str:
     print(result.report())
     if not result.ok:
         raise SystemExit("QA failed — nothing will be published.")
+
 
     if getattr(args, "guide", True):
         _offer_schedule(run_id, OUT / run_id)
@@ -245,13 +260,31 @@ def _show_queue(sch) -> None:
     if not pending:
         return
     print("\nSCHEDULED")
-    print("-" * 74)
+    print("-" * 80)
     print(f"  {'WHEN (KSA)':<22} {'MY':<7} {'RUN ID':<40}")
-    print("-" * 74)
+    print("-" * 80)
+    missing = []
     for e in pending:
         ksa, myt = sch.fmt(e["at"])
-        print(f"  {ksa:<22} {myt:<7} {e['run_id']:<40}")
+        # A queued run whose folder was deleted publishes nothing but a 404 at
+        # its slot, in the middle of the night. Say so here instead.
+        gone = not (OUT / e["run_id"]).exists()
+        flag = "  <- NO IMAGES" if gone else ""
+        if gone:
+            missing.append(e["run_id"])
+        print(f"  {ksa:<22} {myt:<7} {e['run_id']:<40}{flag}")
     print()
+    if missing:
+        print(f"{len(missing)} scheduled post(s) have no build in out/ and "
+              f"will fail at their slot.")
+        print("Rebuild them, or cancel:")
+        for run_id in missing:
+            # Strip the date and only a trailing -v<n>. rsplit("-v") also cut
+            # "student-visa-steps" down to "student".
+            topic = re.sub(r"-v\d+$", "", run_id.split("-", 3)[-1])
+            print(f"  python -m src.run build --topic {topic}")
+            print(f"  python -m src.run schedule --cancel {run_id}")
+        print()
 
 
 def _print_next_steps(run_id: str, out_dir: Path) -> None:
@@ -733,6 +766,16 @@ def cmd_go(args) -> None:
     if kind == "fresh":
         tid = chosen["id"]
         with_img = bool(chosen.get("keywords"))
+
+        # Asked as SLIDES, which is what you see on Instagram, rather than
+        # as points — the cover and the CTA are slides too, and counting them
+        # separately made "4" mean six posts' worth of swipes.
+        default_slides = str(min(7, max(4, int(chosen.get("items", 4)) + 2)))
+        print("\n  How many slides in total? The cover and the closing card")
+        print("  are two of them, so 6 slides means 4 points.")
+        slides = int(_ask("Slides", ["4", "5", "6", "7"], default_slides))
+        chosen = {**chosen, "items": slides - 2}
+
         from src import generate as gen
         print(f"\n  Writing '{tid}' with {gen.model_name()}…")
         try:
@@ -932,6 +975,7 @@ def cmd_publish_due(args) -> None:
         print("Nothing due.")
         return
 
+    failures = 0
     for entry in ready:
         run_id = entry["run_id"]
         ksa, _ = sch.fmt(entry["at"])
@@ -948,9 +992,17 @@ def cmd_publish_due(args) -> None:
         except SystemExit as exc:
             print(f"  failed: {exc}")
             sch.mark(run_id, "failed")
+            failures += 1
         except publish.PublishError as exc:
             print(f"  failed: {exc}")
             sch.mark(run_id, "failed")
+            failures += 1
+
+    if failures:
+        # Exit non-zero so the scheduled run shows as failed and GitHub emails
+        # you. A silent green run on a post that never went out is worse than
+        # no automation.
+        raise SystemExit(f"{failures} scheduled post(s) failed to publish.")
 
 
 # ------------------------------------------------------------------- main
