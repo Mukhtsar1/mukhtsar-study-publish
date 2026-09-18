@@ -1,0 +1,74 @@
+{
+  "00_cover.png": {
+    "pexels_id": 15927957,
+    "photographer": "Dee Onederer",
+    "source": "https://www.pexels.com/photo/palace-in-kuala-lumpur-15927957/",
+    "keywords": [
+      "student visa approval document in Kuala Lumpur"
+    ],
+    "description": "A lush garden view of historical colonial architecture in Kuala Lumpur, Malaysia.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "An exterior view of a historic building with brick architecture, arched walkways, and a co"
+  },
+  "01_item1.png": {
+    "pexels_id": 18690576,
+    "photographer": "Sara Er",
+    "source": "https://www.pexels.com/photo/traditional-list-on-a-table-18690576/",
+    "keywords": [
+      "university acceptance letter on desk in Kuala Lumpur"
+    ],
+    "description": "A vintage letter with wax seal and flowers on a desk, evoking nostalgia.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A dark wooden desk features a wax seal on a grey envelope, a melting spoon, a stamp, and a"
+  },
+  "02_item2.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "laptop showing visa application portal in Kuala Lumpur"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A view of multiple modern skyscrapers and buildings under a clear blue sky."
+  },
+  "03_item3.png": {
+    "pexels_id": 8850721,
+    "photographer": "Tara Winstead",
+    "source": "https://www.pexels.com/photo/red-check-mark-in-a-box-8850721/",
+    "keywords": [
+      "official government approval letter in Malaysia"
+    ],
+    "description": "Close-up of a red check mark on a crisp white paper with black boxes, symbolizing completion.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A red paper checkmark is placed inside a black square outline on a white piece of paper."
+  },
+  "04_item4.png": {
+    "pexels_id": 7009468,
+    "photographer": "Tima Miroshnichenko",
+    "source": "https://www.pexels.com/photo/red-and-white-map-chart-7009468/",
+    "keywords": [
+      "printed single entry visa document Malaysia"
+    ],
+    "description": "Flat lay of a passport and map, symbolizing travel adventure and exploration.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A passport and a map lie flat on a world map."
+  },
+  "05_item5.png": {
+    "pexels_id": 19963293,
+    "photographer": "Tessy Agbonome",
+    "source": "https://www.pexels.com/photo/pen-and-stethoscope-19963293/",
+    "keywords": [
+      "medical checkup clinic reception in Kuala Lumpur"
+    ],
+    "description": "Top view of a stethoscope and pen on a green notepad, ideal for medical and educational themes.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A stethoscope and a black pen are placed on top of a green notebook."
+  }
+}
