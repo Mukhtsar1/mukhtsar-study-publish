@@ -1,0 +1,74 @@
+{
+  "00_cover.png": {
+    "pexels_id": 15577446,
+    "photographer": "ZhiCheng Zhang",
+    "source": "https://www.pexels.com/photo/facade-of-contemporary-building-in-downtown-15577446/",
+    "keywords": [
+      "modern university building facade Kuala Lumpur"
+    ],
+    "description": "Contemporary building showcasing modern architecture with glass facade and structural design.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Modern architectural buildings featuring a mix of perforated metal panels, glass windows, "
+  },
+  "01_item1.png": {
+    "pexels_id": 17586895,
+    "photographer": "Ayyeee Ayyeee",
+    "source": "https://www.pexels.com/photo/text-on-building-wall-17586895/",
+    "keywords": [
+      "university entrance sign Malaysia"
+    ],
+    "description": "A modern urban entrance displaying 'west/east' with architectural details and clear signage.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An architectural view of a building entrance with the sign 'west/east'."
+  },
+  "02_item2.png": {
+    "pexels_id": 29996968,
+    "photographer": "Viridiana Rivera",
+    "source": "https://www.pexels.com/photo/colorful-2025-planner-with-keyboard-and-calendar-29996968/",
+    "keywords": [
+      "academic calendar on desk"
+    ],
+    "description": "Vibrant 2025 planner and calendar on a desk setup for organization and planning.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A 2025 planner and calendar lie open on an orange desk with a pen, keyboard, and mouse."
+  },
+  "03_item3.png": {
+    "pexels_id": 38404939,
+    "photographer": "Alexander Zvir",
+    "source": "https://www.pexels.com/photo/black-and-white-empty-auditorium-seats-38404939/",
+    "keywords": [
+      "lecture hall interior Malaysia"
+    ],
+    "description": "Rows of empty black seats in an auditorium, creating a somber and dramatic atmosphere.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Rows of empty black seats inside a darkened auditorium."
+  },
+  "04_item4.png": {
+    "pexels_id": 32269246,
+    "photographer": "DΛVΞ GΛRCIΛ",
+    "source": "https://www.pexels.com/photo/travel-essentials-passport-currency-and-cards-32269246/",
+    "keywords": [
+      "passport and documents on desk"
+    ],
+    "description": "A flat lay of travel essentials including a passport, US currency, and credit cards on a table.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An US passport, dollar bills, credit cards, and a smartphone are placed on a wooden surfac"
+  },
+  "05_item5.png": {
+    "pexels_id": 38981858,
+    "photographer": "David Yu",
+    "source": "https://www.pexels.com/photo/historic-campus-building-with-scenic-greenery-38981858/",
+    "keywords": [
+      "university campus walkway Malaysia"
+    ],
+    "description": "Aerial view of a historic campus building surrounded by lush greenery under an overcast sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An exterior view of historic stone university buildings situated on a grassy landscape wit"
+  }
+}
