@@ -4,8 +4,9 @@
       "run_id": "2026-09-18-student-visa-steps-v2",
       "topic": "student-visa-steps",
       "at": "2026-09-20T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-09-20T21:19+00:00"
     },
     {
       "run_id": "2026-09-18-foreign-students-contribute-billion-usd",
