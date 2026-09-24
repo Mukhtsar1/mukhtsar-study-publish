@@ -52,7 +52,14 @@
       "path": "B-img",
       "media_id": "17959349126999186",
       "at": "2026-09-22T18:39:03.021013"
+    },
+    {
+      "topic": "malaysia-student-visa-requirements-processing",
+      "run_id": "2026-09-18-malaysia-student-visa-requirements-processing",
+      "path": "A-img",
+      "media_id": "18060330620530698",
+      "at": "2026-09-24T18:55:30.197751"
     }
   ],
-  "rotation_index": 4
+  "rotation_index": 5
 }
