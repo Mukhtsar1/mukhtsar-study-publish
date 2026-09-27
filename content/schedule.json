@@ -28,8 +28,9 @@
       "run_id": "2026-09-19-university-intake-calendar",
       "topic": "university-intake-calendar",
       "at": "2026-09-27T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-09-27T18:11+00:00"
     }
   ]
 }

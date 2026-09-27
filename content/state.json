@@ -59,7 +59,14 @@
       "path": "A-img",
       "media_id": "18060330620530698",
       "at": "2026-09-24T18:55:30.197751"
+    },
+    {
+      "topic": "university-intake-calendar",
+      "run_id": "2026-09-19-university-intake-calendar",
+      "path": "A-img",
+      "media_id": "17947294698280482",
+      "at": "2026-09-27T18:11:00.447020"
     }
   ],
-  "rotation_index": 5
+  "rotation_index": 6
 }
