@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "modern building exterior kuala lumpur"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A low-angle view of a city skyline with various modern high-rise buildings and towers agai"
+  },
+  "01_item1.png": {
+    "pexels_id": 6345332,
+    "photographer": "https://kaboompics.com/",
+    "source": "https://www.pexels.com/photo/trophies-and-medals-on-a-white-table-6345332/",
+    "keywords": [
+      "trophy and award certificate"
+    ],
+    "description": "A collection of trophies and medals displayed on a white desk, symbolizing success and victory.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Trophies and medals are displayed on a white table."
+  },
+  "02_item2.png": {
+    "pexels_id": 1719490,
+    "photographer": "Harm Jakob Tolsma",
+    "source": "https://www.pexels.com/photo/arrivals-aankomst-terminal-1-signage-1719490/",
+    "keywords": [
+      "airport arrival sign kuala lumpur"
+    ],
+    "description": "Bright arrivals sign with airplane symbol in an airport terminal.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An airport arrivals sign with the number 1 hanging from the ceiling."
+  },
+  "03_item3.png": {
+    "pexels_id": 38981858,
+    "photographer": "David Yu",
+    "source": "https://www.pexels.com/photo/historic-campus-building-with-scenic-greenery-38981858/",
+    "keywords": [
+      "university campus walkway malaysia"
+    ],
+    "description": "Aerial view of a historic campus building surrounded by lush greenery under an overcast sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An exterior view of historic stone campus buildings situated next to grassy hills and walk"
+  },
+  "04_item4.png": {
+    "pexels_id": 20432872,
+    "photographer": "Adam Sondel",
+    "source": "https://www.pexels.com/photo/laptops-in-a-classroom-20432872/",
+    "keywords": [
+      "student desk with laptop"
+    ],
+    "description": "A close-up of a laptop on a desk in a classroom setting, ready for educational use.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Laptops and school supplies are placed on a desk in a classroom setting."
+  }
+}
