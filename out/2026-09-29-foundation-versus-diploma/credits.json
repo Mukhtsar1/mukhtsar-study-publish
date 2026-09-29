@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "modern university library in kuala lumpur"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A view of multiple modern skyscrapers and towers against a clear blue sky."
+  },
+  "01_item1.png": {
+    "pexels_id": 13112441,
+    "photographer": "Julia Miranda",
+    "source": "https://www.pexels.com/photo/boston-college-library-13112441/",
+    "keywords": [
+      "university lecture hall interior"
+    ],
+    "description": "Quiet study area with wooden desks and stained glass in Boston's library.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An interior view of a grand library hall with rows of wooden tables and chairs, stained gl"
+  },
+  "02_item2.png": {
+    "pexels_id": 5092815,
+    "photographer": "Brett Sayles",
+    "source": "https://www.pexels.com/photo/modern-computer-placed-near-server-racks-5092815/",
+    "keywords": [
+      "modern computer lab interior"
+    ],
+    "description": "Contemporary computer with black screen placed on stand near row of server steel racks in data center",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A computer monitor and keyboard cart set up in a server room."
+  },
+  "03_item3.png": {
+    "pexels_id": 4372319,
+    "photographer": "Jakson Martins",
+    "source": "https://www.pexels.com/photo/photo-of-open-books-on-table-4372319/",
+    "keywords": [
+      "open textbooks and notepad on desk"
+    ],
+    "description": "Open Bible and notebook on a wooden table with notes and a bookmark, warm lighting.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An open book and papers lie on a patterned surface with a pencil resting across the pages."
+  },
+  "04_item4.png": {
+    "pexels_id": 2982449,
+    "photographer": "MELIANI Driss",
+    "source": "https://www.pexels.com/photo/green-trees-between-white-concrete-buildings-2982449/",
+    "keywords": [
+      "modern university campus walkway"
+    ],
+    "description": "Elegant university building with garden courtyard in Rabat, Morocco under clear blue sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An open courtyard with green grass, trees, and white buildings on either side under a blue"
+  }
+}
