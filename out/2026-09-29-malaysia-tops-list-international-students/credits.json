@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 2982449,
+    "photographer": "MELIANI Driss",
+    "source": "https://www.pexels.com/photo/green-trees-between-white-concrete-buildings-2982449/",
+    "keywords": [
+      "modern university campus architecture"
+    ],
+    "description": "Elegant university building with garden courtyard in Rabat, Morocco under clear blue sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An interior courtyard with a grassy lawn, trees, and white multi-story buildings surroundi"
+  },
+  "01_item1.png": {
+    "pexels_id": 39107642,
+    "photographer": "Hasan şen",
+    "source": "https://www.pexels.com/photo/rustic-classroom-with-wooden-desks-and-chalkboard-39107642/",
+    "keywords": [
+      "library interior with study desks"
+    ],
+    "description": "Vintage classroom with wooden desks, blackboard, and bookshelves.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An old empty classroom features rustic wooden desks, a chalkboard, and bookshelves filled "
+  },
+  "02_item2.png": {
+    "pexels_id": 5905452,
+    "photographer": "Katerina Holmes",
+    "source": "https://www.pexels.com/photo/opened-copybooks-placed-on-school-bench-5905452/",
+    "keywords": [
+      "open textbook on wooden table"
+    ],
+    "description": "Stationery and opened copybooks with empty sheets placed on wooden desk in light contemporary school",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An open notebook and worksheets are on a wooden desk."
+  },
+  "03_item3.png": {
+    "pexels_id": 38883416,
+    "photographer": "River Augustin",
+    "source": "https://www.pexels.com/photo/repetitive-pattern-of-empty-grey-auditorium-chairs-38883416/",
+    "keywords": [
+      "modern lecture hall interior"
+    ],
+    "description": "A captivating view of endless rows of grey chairs in an empty auditorium.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An orderly arrangement of empty stadium seats in monochrome tones."
+  },
+  "04_item4.png": {
+    "pexels_id": 6893329,
+    "photographer": "Mikhail Nilov",
+    "source": "https://www.pexels.com/photo/netbook-with-planner-and-jotter-placed-near-pencils-on-desk-6893329/",
+    "keywords": [
+      "desk with laptop and planner"
+    ],
+    "description": "Top view of modern laptop with notebooks and cup of pencils composed on white table in office",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An overhead view of a white desk with stationery items, a laptop, and notebooks."
+  }
+}
