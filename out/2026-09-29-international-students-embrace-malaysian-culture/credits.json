@@ -1,0 +1,50 @@
+{
+  "00_cover.png": {
+    "pexels_id": 36662527,
+    "photographer": "Wii Love",
+    "source": "https://www.pexels.com/photo/serene-sunset-at-langkawi-yacht-marina-36662527/",
+    "keywords": [
+      "langkawi scenic island view"
+    ],
+    "description": "Breathtaking sunset view of Langkawi Yacht Marina in Kedah, Malaysia, highlighting leisure and luxury.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A marina filled with various boats and yachts under a warm sunset sky."
+  },
+  "01_item1.png": {
+    "pexels_id": 32049488,
+    "photographer": "Tc Zainul",
+    "source": "https://www.pexels.com/photo/sultan-ahmad-shah-state-mosque-in-kuantan-malaysia-32049488/",
+    "keywords": [
+      "cultural heritage building malaysia"
+    ],
+    "description": "Elegant architecture of Sultan Ahmad Shah State Mosque with reflection in Kuantan, Malaysia.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A white mosque with a golden dome stands beside a calm body of water reflecting its struct"
+  },
+  "02_item2.png": {
+    "pexels_id": 27907978,
+    "photographer": "Helena Jankovičová Kováčová",
+    "source": "https://www.pexels.com/photo/a-large-sign-that-says-stu-in-front-of-a-building-27907978/",
+    "keywords": [
+      "modern university campus exterior"
+    ],
+    "description": "Modern building entrance with large STU letters surrounded by greenery and urban design.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Large white STU letters stand outside a modern building with trees and stairs."
+  },
+  "03_item3.png": {
+    "pexels_id": 15261789,
+    "photographer": "Chait Goli",
+    "source": "https://www.pexels.com/photo/scenic-view-of-a-rainforest-15261789/",
+    "keywords": [
+      "tropical rainforest nature view"
+    ],
+    "description": "Lush tropical rainforest with palm tree and mountain range",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An aerial view of a lush green rainforest under a cloudy sky."
+  }
+}
