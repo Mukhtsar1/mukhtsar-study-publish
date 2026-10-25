@@ -1,0 +1,15 @@
+{
+  "run_id": "2026-10-25-emgs-study-malaysia-education-fair",
+  "topic": "emgs-study-malaysia-education-fair",
+  "path": "A",
+  "slides": [
+    "00_cover.png",
+    "01_item1.png",
+    "02_item2.png",
+    "03_item3.png",
+    "04_cta.png"
+  ],
+  "built": "2026-10-25T18:09:48.990277",
+  "reviewed": true,
+  "reviewed_at": "2026-10-25T18:09"
+}
