@@ -90,6 +90,13 @@
       "at": "2026-10-29T18:00+00:00",
       "status": "pending",
       "media_id": null
+    },
+    {
+      "run_id": "2026-10-25-malaysia-set-surpass-foreign-student",
+      "topic": "malaysia-set-surpass-foreign-student",
+      "at": "2026-11-01T18:00+00:00",
+      "status": "pending",
+      "media_id": null
     }
   ]
 }

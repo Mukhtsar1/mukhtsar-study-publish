@@ -12,6 +12,7 @@
     "06_cta.png"
   ],
   "built": "2026-10-25T18:05:26.142742",
-  "reviewed": true,
-  "reviewed_at": "2026-10-25T18:05"
+  "reviewed": false,
+  "reviewed_at": "2026-10-25T18:05",
+  "written_by": "model"
 }
