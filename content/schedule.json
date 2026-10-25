@@ -111,6 +111,13 @@
       "at": "2026-11-05T18:00+00:00",
       "status": "pending",
       "media_id": null
+    },
+    {
+      "run_id": "2026-10-25-malaysia-kazakhstan-revive-higher-education",
+      "topic": "malaysia-kazakhstan-revive-higher-education",
+      "at": "2026-11-08T18:00+00:00",
+      "status": "pending",
+      "media_id": null
     }
   ]
 }
