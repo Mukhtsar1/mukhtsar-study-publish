@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 38696515,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-skyline-with-iconic-towers-38696515/",
+    "keywords": [
+      "modern student accommodation building Kuala Lumpur"
+    ],
+    "description": "Stunning view of Kuala Lumpur's skyline featuring iconic towers under a clear blue sky.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "A view of multiple modern skyscrapers and buildings under a clear blue sky."
+  },
+  "01_item1.png": {
+    "pexels_id": 30123516,
+    "photographer": "Mohammed Alim",
+    "source": "https://www.pexels.com/photo/kuala-lumpur-cityscape-during-blue-hour-30123516/",
+    "keywords": [
+      "city skyline Kuala Lumpur"
+    ],
+    "description": "A serene view of Kuala Lumpur skyline during blue hour, showcasing high-rise buildings and city lights.",
+    "needs_review": false,
+    "place_confirmed": true,
+    "vision": "An elevated nighttime view of a city skyline with illuminated skyscrapers and highways."
+  },
+  "02_item2.png": {
+    "pexels_id": 15577446,
+    "photographer": "ZhiCheng Zhang",
+    "source": "https://www.pexels.com/photo/facade-of-contemporary-building-in-downtown-15577446/",
+    "keywords": [
+      "modern university building exterior Malaysia"
+    ],
+    "description": "Contemporary building showcasing modern architecture with glass facade and structural design.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "Modern architecture features a building with perforated metal panels and blue glass window"
+  },
+  "03_item3.png": {
+    "pexels_id": 30212568,
+    "photographer": "Andretti Brown",
+    "source": "https://www.pexels.com/photo/stylish-modern-office-lounge-with-warm-lighting-30212568/",
+    "keywords": [
+      "apartment building lobby interior"
+    ],
+    "description": "A modern office lounge with warm lighting, featuring mid-century furniture and floor-to-ceiling windows.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An office lobby with modern armchairs, a coffee table, large windows, and geometric wall a"
+  },
+  "04_item4.png": {
+    "pexels_id": 265148,
+    "photographer": "Pixabay",
+    "source": "https://www.pexels.com/photo/silver-macbook-beside-wallet-265148/",
+    "keywords": [
+      "modern office desk with laptop and notebook"
+    ],
+    "description": "A clean, organized desk featuring a laptop, smartphone, notebook, and pen, ideal for productivity.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An overhead view of a closed laptop, a notebook, a pen, and a smartphone on a wooden surfa"
+  }
+}
