@@ -1,0 +1,62 @@
+{
+  "00_cover.png": {
+    "pexels_id": 2982449,
+    "photographer": "MELIANI Driss",
+    "source": "https://www.pexels.com/photo/green-trees-between-white-concrete-buildings-2982449/",
+    "keywords": [
+      "modern university campus building exterior"
+    ],
+    "description": "Elegant university building with garden courtyard in Rabat, Morocco under clear blue sky.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A courtyard with a grassy lawn, trees, and white buildings surrounding it under a blue sky"
+  },
+  "01_item1.png": {
+    "pexels_id": 7821476,
+    "photographer": "RDNE Stock project",
+    "source": "https://www.pexels.com/photo/text-7821476/",
+    "keywords": [
+      "official immigration documents on wooden desk"
+    ],
+    "description": "Focused image of business credit application papers, ideal for finance themes.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "A close-up view of a business credit application document."
+  },
+  "02_item2.png": {
+    "pexels_id": 7845293,
+    "photographer": "RDNE Stock project",
+    "source": "https://www.pexels.com/photo/photo-of-a-work-desk-7845293/",
+    "keywords": [
+      "calendar and desk organizer"
+    ],
+    "description": "Neat office desk setup featuring a calendar, plant, and vibrant pink chair.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An office cubicle features an orange desk with a calendar, a stack of books, a green binde"
+  },
+  "03_item3.png": {
+    "pexels_id": 15191072,
+    "photographer": "Filip Sestrenek",
+    "source": "https://www.pexels.com/photo/high-angle-view-on-shops-and-service-buildings-15191072/",
+    "keywords": [
+      "modern commercial storefront exterior"
+    ],
+    "description": "Panoramic view of an industrial shopping area with buildings and empty parking lots.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An outdoor panoramic view of a commercial building labeled BORTEX with a parking lot."
+  },
+  "04_item4.png": {
+    "pexels_id": 32334270,
+    "photographer": "khezez  | خزاز",
+    "source": "https://www.pexels.com/photo/modern-office-reception-with-artistic-decor-32334270/",
+    "keywords": [
+      "university administration office counter"
+    ],
+    "description": "Elegant office reception featuring modern furniture and vibrant wall art in Baghdad.",
+    "needs_review": true,
+    "place_confirmed": false,
+    "vision": "An interior reception area with a desk, chairs, and abstract art on the wall."
+  }
+}
