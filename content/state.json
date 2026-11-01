@@ -38,7 +38,35 @@
       "path": "A",
       "media_id": "18131237362669213",
       "at": "2026-09-17T19:02:21.221195"
+    },
+    {
+      "topic": "student-visa-steps",
+      "run_id": "2026-09-18-student-visa-steps-v2",
+      "path": "A-img",
+      "media_id": "17875748646566845",
+      "at": "2026-09-20T21:19:42.631059"
+    },
+    {
+      "topic": "foreign-students-contribute-billion-usd",
+      "run_id": "2026-09-18-foreign-students-contribute-billion-usd",
+      "path": "B-img",
+      "media_id": "17959349126999186",
+      "at": "2026-09-22T18:39:03.021013"
+    },
+    {
+      "topic": "malaysia-student-visa-requirements-processing",
+      "run_id": "2026-09-18-malaysia-student-visa-requirements-processing",
+      "path": "A-img",
+      "media_id": "18060330620530698",
+      "at": "2026-09-24T18:55:30.197751"
+    },
+    {
+      "topic": "university-intake-calendar",
+      "run_id": "2026-09-19-university-intake-calendar",
+      "path": "A-img",
+      "media_id": "17947294698280482",
+      "at": "2026-09-27T18:11:00.447020"
     }
   ],
-  "rotation_index": 2
+  "rotation_index": 6
 }
