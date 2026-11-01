@@ -66,7 +66,14 @@
       "path": "A-img",
       "media_id": "17947294698280482",
       "at": "2026-09-27T18:11:00.447020"
+    },
+    {
+      "topic": "malaysia-tops-list-international-students",
+      "run_id": "2026-09-29-malaysia-tops-list-international-students",
+      "path": "B-img",
+      "media_id": "18126029338934231",
+      "at": "2026-11-01T18:21:28.703642"
     }
   ],
-  "rotation_index": 6
+  "rotation_index": 7
 }
