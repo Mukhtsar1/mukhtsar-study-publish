@@ -43,8 +43,9 @@
       "run_id": "2026-09-29-opening-bank-account",
       "topic": "opening-bank-account",
       "at": "2026-11-03T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-11-03T18:18+00:00"
     },
     {
       "run_id": "2026-09-29-international-students-embrace-malaysian-culture",
