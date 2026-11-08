@@ -59,8 +59,9 @@
       "run_id": "2026-09-29-emgs-international-students-generate-year",
       "topic": "emgs-international-students-generate-year",
       "at": "2026-11-08T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-11-08T21:00+00:00"
     },
     {
       "run_id": "2026-09-29-world-first-now-global-winner",
