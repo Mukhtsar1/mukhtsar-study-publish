@@ -67,8 +67,9 @@
       "run_id": "2026-09-29-world-first-now-global-winner",
       "topic": "world-first-now-global-winner",
       "at": "2026-11-10T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-11-10T23:01+00:00"
     },
     {
       "run_id": "2026-09-29-foundation-versus-diploma",

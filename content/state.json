@@ -94,7 +94,14 @@
       "path": "B",
       "media_id": "18212059582318660",
       "at": "2026-11-08T21:00:39.156882"
+    },
+    {
+      "topic": "world-first-now-global-winner",
+      "run_id": "2026-09-29-world-first-now-global-winner",
+      "path": "A-img",
+      "media_id": "17997745401050470",
+      "at": "2026-11-10T23:01:05.248272"
     }
   ],
-  "rotation_index": 10
+  "rotation_index": 11
 }
