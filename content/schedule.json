@@ -75,8 +75,9 @@
       "run_id": "2026-09-29-foundation-versus-diploma",
       "topic": "foundation-versus-diploma",
       "at": "2026-11-12T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-11-12T18:00+00:00"
     },
     {
       "run_id": "2026-10-25-malaysia-sets-its-sights-international",
