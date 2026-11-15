@@ -108,7 +108,14 @@
       "path": "A-img",
       "media_id": "18119610817814800",
       "at": "2026-11-12T18:00:52.924502"
+    },
+    {
+      "topic": "malaysia-sets-its-sights-international",
+      "run_id": "2026-10-25-malaysia-sets-its-sights-international",
+      "path": "B-img",
+      "media_id": "17967063303232601",
+      "at": "2026-11-15T21:34:08.540658"
     }
   ],
-  "rotation_index": 12
+  "rotation_index": 13
 }
