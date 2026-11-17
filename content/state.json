@@ -115,7 +115,14 @@
       "path": "B-img",
       "media_id": "17967063303232601",
       "at": "2026-11-15T21:34:08.540658"
+    },
+    {
+      "topic": "malaysia-targets-international-students-zambry",
+      "run_id": "2026-10-25-malaysia-targets-international-students-zambry",
+      "path": "A",
+      "media_id": "18134433103689412",
+      "at": "2026-11-17T21:38:08.620986"
     }
   ],
-  "rotation_index": 13
+  "rotation_index": 14
 }
