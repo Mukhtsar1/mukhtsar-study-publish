@@ -129,7 +129,14 @@
       "path": "A",
       "media_id": "17947718253370132",
       "at": "2026-11-19T20:17:32.172504"
+    },
+    {
+      "topic": "malaysia-set-surpass-foreign-student",
+      "run_id": "2026-10-25-malaysia-set-surpass-foreign-student",
+      "path": "B",
+      "media_id": "18398912953161591",
+      "at": "2026-11-22T18:23:15.065898"
     }
   ],
-  "rotation_index": 15
+  "rotation_index": 16
 }

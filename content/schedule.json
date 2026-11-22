@@ -107,8 +107,9 @@
       "run_id": "2026-10-25-malaysia-set-surpass-foreign-student",
       "topic": "malaysia-set-surpass-foreign-student",
       "at": "2026-11-22T18:00+00:00",
-      "status": "pending",
-      "media_id": null
+      "status": "published",
+      "media_id": null,
+      "done_at": "2026-11-22T18:23+00:00"
     },
     {
       "run_id": "2026-10-25-best-online-mba-programs-malaysia",
