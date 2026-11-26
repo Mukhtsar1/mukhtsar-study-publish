@@ -143,7 +143,14 @@
       "path": "A",
       "media_id": "17903272512609626",
       "at": "2026-11-25T02:05:02.030646"
+    },
+    {
+      "topic": "malaysia-central-asia-higher-education",
+      "run_id": "2026-10-25-malaysia-central-asia-higher-education",
+      "path": "A",
+      "media_id": "18088422965710347",
+      "at": "2026-11-26T23:36:51.116939"
     }
   ],
-  "rotation_index": 17
+  "rotation_index": 18
 }
